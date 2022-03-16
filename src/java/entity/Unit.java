@@ -25,50 +25,5 @@ public class Unit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private File image;
-    private String year;
-    private List<String> kinds;
-    private String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public File getImage() {
-        return image;
-    }
-
-    public void setImage(File image) {
-        this.image = image;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public List<String> getKinds() {
-        return kinds;
-    }
-
-    public void setKinds(List<String> kinds) {
-        this.kinds = kinds;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     
 }

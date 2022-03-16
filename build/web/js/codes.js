@@ -1,11 +1,14 @@
 
-function a(){
-    let input = document.getElementById("image");
+function click_input(){
+    let input = document.getElementById("input_img");
     input.click();
 }
-function b(){
-    let img = document.getElementById("img_adds");
-    let input = document.getElementById("image");
-    img.src = "/"+input.src;
-    console.log(img.src)
+function change(){
+    let img = document.getElementById("img");
+    let input = document.getElementById("input_img").files[0];
+    if (input){
+        img.src = URL.createObjectURL(input);
+        localStorage.setItem('my_img',img.src);
+    }
+    img.src = localStorage.getItem('my_img');
 }

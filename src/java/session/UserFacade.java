@@ -28,5 +28,11 @@ public class UserFacade extends AbstractFacade<User> {
     public UserFacade() {
         super(User.class);
     }
-    
+    public User findByEmail(String email) {
+        try {
+            return (User) em.createQuery("SELECT u FROM User u WHERE u.email=:email").setParameter("email", email).getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

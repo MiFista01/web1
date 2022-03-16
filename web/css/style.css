@@ -22,6 +22,7 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     height: 200px;
     width: 100%;
     background-color: rgb(53, 53, 53);
@@ -93,11 +94,12 @@ header a{
     color: whitesmoke;
     text-decoration: none;
 }
-.admin{
-    margin-right: 5%;
+.icon{
+    width: 200px;
     text-align: center;
 }
-.admin img{
+.icon img{
+    width: 40%;
     margin-bottom: -20px;
 }
 header p{
@@ -210,7 +212,7 @@ form{
 }
 .add_img{
     width: 400px;
-    height: 600px;
+    height: 650px;
     float: left;
 }
 .add_img input{
@@ -222,6 +224,7 @@ form{
     opacity: 0;
 }
 .add_img img{
+    float: left;
     margin-top: 20px;
     width: 100%;
     height: auto;
@@ -229,6 +232,7 @@ form{
     border: 5px solid black;
 }
 .date{
+    float: left;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -237,13 +241,11 @@ form{
     font-size: 20px;
     margin: 0px 25px;
     overflow: hidden;
-    float: left;
 }
 .date input{
     height: 25px;
     text-align: center;
     font-size: 20px;
-    width: auto;
     margin: 0px;
     border: 4px solid dimgray;
     background-color: whitesmoke;
@@ -259,7 +261,7 @@ form{
     border-radius: 10px;
 }
 .description{
-    flex-grow: 2;
+    float: left;
     font-weight: bold;
     font-size: 20px;
     float: left;
@@ -279,6 +281,23 @@ form{
     border-radius: 10px;
     box-sizing: border-box;
     padding: 10px;
+}
+.add button{
+    font-weight: bold;
+    width: 15%;
+    float: left;
+    margin-left: 5%;
+    margin-top: 5%;
+    height: 50px;
+    font-size: 25px;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+.add button:hover{
+    height: 40px;
+    background-color: darkred;
+    color: whitesmoke;
+    border: 5px solid whitesmoke;
 }
 /*=======================================Страница добваления=============================================*/
 

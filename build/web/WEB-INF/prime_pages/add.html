@@ -9,24 +9,35 @@
     <script src="../../js/codes.js"></script>
 </head>
 <body>
-    <main class="add">
-        <form action="add">
-            <div class="img_add">
-                <input type="file" name="image" id="image" onchange="b()">
-                <img src="../../img/author/img_add.png" alt="add" id="img_adds" onclick="a()">
-            </div>
-            <input type="number" name="year">
-            <select name="kinds" id="" size="1">
-                <option disabled selected>выбор жанра</option>
-                <option value="портрет">портрет</option>
-                <option value="пейзаж">пейзаж</option>
-                <option value="натюрморт">натюрморт</option>
-                <option value="масленный">масленный</option>
-                <option value="мелковый">мелковый</option>
-            </select>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-        </form>
-    </main>
-    
+    <div class="wrapper">
+        <main class="add">
+            <form action="add">
+                <div class="add_img">
+                    <input required type="file" name="image" id="input_img" onchange="change()" >
+                    <img src="../../img/author/img_add.png" alt="" onclick="click_input()" id="img">
+                </div>
+                <div class="date">
+                    <label for="price">Цена:</label>
+                    <input required type="number" name="price" id="price">
+                    <label for="year">Год написания:</label>
+                    <input required type="date" name="year" id="year">
+                    <label for="kinds">Жанры:</label>
+                    <select required name="kinds" id="kinds" size="1" >
+                        <option disabled selected>выбор жанра</option>
+                        <option value="портрет">портрет</option>
+                        <option value="пейзаж">пейзаж</option>
+                        <option value="натюрморт">натюрморт</option>
+                        <option value="масленный">масленный</option>
+                        <option value="мелковый">мелковый</option>
+                    </select>
+                </div>
+                <div class="description">
+                    <label for="description">Описание:</label>
+                    <textarea required name="description" id="description" cols="30" rows="10"></textarea>
+                </div>
+                <button type="submit">Создать</button>
+            </form>
+        </main>
+    </div>    
 </body>
 </html>

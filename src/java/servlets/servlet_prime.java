@@ -70,8 +70,7 @@ public class servlet_prime extends HttpServlet {
                 break;
             case "/admin":
                 user = userFacade.find(id);
-                items = unitFacade.findAll();
-                request.setAttribute("items", items);
+                
                 request.setAttribute("name", user.getName());
                 request.setAttribute("surname", user.getSurname());
                 request.getRequestDispatcher("WEB-INF/prime_pages/admin.jsp").forward(request, response);
@@ -102,17 +101,12 @@ public class servlet_prime extends HttpServlet {
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 List<User> array = userFacade.findAll();
-                for(User i : array){
-                    if (i.getEmail().equals(email) && i.getPassword().equals(password)){
-                        request.setAttribute("name", i.getName());
-                        request.setAttribute("surname", i.getSurname());
-                        id = i.getId();
-                        request.getRequestDispatcher("WEB-INF/prime_pages/admin.jsp").forward(request, response);
-                        break;
-                    }
-                }
-                if(id == 0){
-                    request.getRequestDispatcher("/index").forward(request, response);   
+                User aut_user = userFacade.findByEmail(email);
+                if (aut_user == null){
+                    request.getRequestDispatcher("/index").forward(request, response);
+                }else{
+                    id = aut_user.getId();
+                    request.getRequestDispatcher("/admin").forward(request, response);
                 }
                 break;
         }
