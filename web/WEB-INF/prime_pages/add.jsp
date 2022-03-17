@@ -7,10 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <main class="add">
-    <form action="add_img" method="POST">
+    <form action="add_img" method="POST" enctype="multipart/form-data">
         <div class="add_img">
             <img src="img/author/img_add.png" alt="" onclick="click_input()" id="img">
-            <p><input required="" type="file" name="image" id="input_img" onchange="change()"></p> 
+            <p><input required type="file" name="image" id="input_img" onchange="change()"></p> 
         </div>
         <div class="date">
             <label for="price">Цена:</label>

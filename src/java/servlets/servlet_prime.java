@@ -5,16 +5,30 @@
  */
 package servlets;
 
+import entity.Picture;
 import entity.Unit;
 import entity.User;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.ejb.EJB;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.imgscalr.Scalr;
+import session.PictureFacade;
 import session.UnitFacade;
 import session.UserFacade;
 
@@ -24,10 +38,14 @@ import session.UserFacade;
  */
 @WebServlet(name = "servlet_prime", loadOnStartup = 1, urlPatterns = {"/index","/reg",
     "/admin","/add","/mod","/registration","/add_img","/authorize"})
+@MultipartConfig()
 public class servlet_prime extends HttpServlet {
     @EJB
     UserFacade userFacade = new UserFacade();
+    @EJB
     UnitFacade unitFacade = new UnitFacade();
+    @EJB
+    PictureFacade pictureFacade = new PictureFacade();
     long id = 0;
     
     /**
@@ -57,9 +75,10 @@ public class servlet_prime extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String path = request.getServletPath();
         User user;
-        List<Unit> items;
+        Unit unit;
         switch (path){
             case "/index":
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -69,7 +88,6 @@ public class servlet_prime extends HttpServlet {
                 break;
             case "/admin":
                 user = userFacade.find(id);
-                
                 request.setAttribute("name", user.getName());
                 request.setAttribute("surname", user.getSurname());
                 request.getRequestDispatcher("WEB-INF/prime_pages/admin.jsp").forward(request, response);
@@ -97,13 +115,35 @@ public class servlet_prime extends HttpServlet {
                 request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
                 break;
             case "/add_img":
-                Unit unit = new Unit();
-                unit.setPath(request.getParameter("image"));
+                unit = new Unit();
+                List<Part> fileParts = request.getParts().stream().filter( part -> "image".equals(part.getName())).collect(Collectors.toList());
+                String imagesFolder = "C:\\uploadFiles\\";
+                for(Part filePart : fileParts){
+                    String pathToFile = imagesFolder + File.separatorChar
+                                    +getFileName(filePart);
+                    
+                    File tempFile = new File(imagesFolder+File.separatorChar+"tmp"+File.separatorChar+getFileName(filePart));
+                    tempFile.mkdirs();
+                    System.out.println(tempFile.getName());
+                    try(InputStream fileContent = filePart.getInputStream()){
+                       Files.copy(
+                               fileContent,tempFile.toPath(), 
+                               StandardCopyOption.REPLACE_EXISTING
+                       );
+                       writeToFile(resize(tempFile),pathToFile);
+                       tempFile.delete();
+                    }
+                    String description = request.getParameter("description");
+                    Picture picture = new Picture();
+                    picture.setDescription(description);
+                    picture.setPathToFile(pathToFile);
+                    pictureFacade.create(picture);
+                }    
                 unit.setPrice(request.getParameter("price"));
-                unit.setDate(request.getParameter("year"));
+                unit.setDates(request.getParameter("year"));
+                unit.setKind(request.getParameter("kinds"));
                 unit.setKind(request.getParameter("kinds"));
                 unit.setDescription(request.getParameter("description"));
-                System.out.println(unit);
                 unitFacade.create(unit);
                 request.getRequestDispatcher("/add").forward(request, response);
                 break;
@@ -122,6 +162,56 @@ public class servlet_prime extends HttpServlet {
         }
     }
 
+    
+    private String getFileName(Part part){
+        final String partHeader = part.getHeader("content-disposition");
+        for (String content : part.getHeader("content-disposition").split(";")){
+            if(content.trim().startsWith("filename")){
+                return content
+                        .substring(content.indexOf('=')+1)
+                        .trim()
+                        .replace("\"",""); 
+            }
+        }
+        return null;
+    }
+    public void writeToFile(byte[] data, String fileName) throws IOException{
+        try (FileOutputStream out = new FileOutputStream(fileName)) {
+            out.write(data);
+        }
+    }
+    public byte[] resize(File icon) {
+        try {
+           BufferedImage originalImage = ImageIO.read(icon);
+           byte[] imageInByte;
+            try ( //To save with original ratio uncomment next line and comment the above.
+            //originalImage= Scalr.resize(originalImage, 153, 128);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+                String name = icon.getName();
+                if ("jpg".equals(name.substring(name.indexOf(".")+1))){
+                    ImageIO.write(originalImage, "jpg", baos);
+                }
+                if ("png".equals(name.substring(name.indexOf(".")+1))){
+                    ImageIO.write(originalImage, "png", baos);
+                }
+                if ("svg".equals(name.substring(name.indexOf(".")+1))){
+                    ImageIO.write(originalImage, "svg", baos);
+                }
+                if ("jpeg".equals(name.substring(name.indexOf(".")+1))){
+                    ImageIO.write(originalImage, "jpeg", baos);
+                }
+                baos.flush();
+                imageInByte = baos.toByteArray();
+            }
+            return imageInByte;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    
+    
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

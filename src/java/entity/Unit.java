@@ -5,26 +5,31 @@
  */
 package entity;
 
+import java.io.Serializable;
+import java.sql.Blob;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author aleksei
  */
 @Entity
-public class Unit{
-
+public class Unit implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String path;
+    private Part image;
     private String price;
-    private String date;
+    private String dates;
     private String kind;
     private String description;
+    @OneToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -34,12 +39,12 @@ public class Unit{
         this.id = id;
     }
 
-    public String getPath() {
-        return path;
+    public Part getImage() {
+        return image;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setImage(Part image) {
+        this.image = image;
     }
 
     public String getPrice() {
@@ -50,12 +55,12 @@ public class Unit{
         this.price = price;
     }
 
-    public String getDate() {
-        return date;
+    public String getDates() {
+        return dates;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDates(String dates) {
+        this.dates = dates;
     }
 
     public String getKind() {
@@ -76,8 +81,8 @@ public class Unit{
 
     @Override
     public String toString() {
-        return "Unit{" + "id=" + id + ", path=" + path + ", price=" + price + ", date=" + date + ", kind=" + kind + ", description=" + description + '}';
+        return "Unit{" + "id=" + id + ", image=" + image + ", price=" + price + ", dates=" + dates + ", kind=" + kind + ", description=" + description + '}';
     }
-    
+
     
 }
