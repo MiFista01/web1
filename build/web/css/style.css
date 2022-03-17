@@ -214,11 +214,10 @@ form{
     width: 400px;
     height: 650px;
     float: left;
+    text-align: center;
 }
 .add_img input{
-    position: absolute;
-    left: 0px;
-    top: 0px;
+    position: relative;
     width: 1px;
     height: 1px;
     opacity: 0;

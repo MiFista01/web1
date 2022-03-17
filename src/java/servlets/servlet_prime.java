@@ -8,7 +8,6 @@ package servlets;
 import entity.Unit;
 import entity.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -24,7 +23,7 @@ import session.UserFacade;
  * @author aleksei
  */
 @WebServlet(name = "servlet_prime", loadOnStartup = 1, urlPatterns = {"/index","/reg",
-    "/admin","/add","/mod","/registration","/authorize"})
+    "/admin","/add","/mod","/registration","/add_img","/authorize"})
 public class servlet_prime extends HttpServlet {
     @EJB
     UserFacade userFacade = new UserFacade();
@@ -96,6 +95,17 @@ public class servlet_prime extends HttpServlet {
                 pers.setPassword(request.getParameter("password"));
                 userFacade.create(pers);
                 request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
+                break;
+            case "/add_img":
+                Unit unit = new Unit();
+                unit.setPath(request.getParameter("image"));
+                unit.setPrice(request.getParameter("price"));
+                unit.setDate(request.getParameter("year"));
+                unit.setKind(request.getParameter("kinds"));
+                unit.setDescription(request.getParameter("description"));
+                System.out.println(unit);
+                unitFacade.create(unit);
+                request.getRequestDispatcher("/add").forward(request, response);
                 break;
             case "/authorize":
                 String email = request.getParameter("email");
