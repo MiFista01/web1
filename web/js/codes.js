@@ -12,3 +12,8 @@ function change(){
     }
     img.src = localStorage.getItem('my_img');
 }
+let numb = 0;
+function show(){
+    numb = numb+1;
+    console.log(numb);
+}

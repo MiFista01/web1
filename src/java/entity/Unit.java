@@ -6,13 +6,12 @@
 package entity;
 
 import java.io.Serializable;
-import java.sql.Blob;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.servlet.http.Part;
 
 /**
  *
@@ -26,6 +25,7 @@ public class Unit implements Serializable{
     private String price;
     private String year;
     private String kind;
+    @Column(length = 3000)
     private String description;
     @OneToOne
     private User user;

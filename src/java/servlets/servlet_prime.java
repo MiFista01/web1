@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.ejb.EJB;
@@ -37,7 +38,7 @@ import session.UserFacade;
  * @author aleksei
  */
 @WebServlet(name = "servlet_prime", loadOnStartup = 1, urlPatterns = {"/index","/reg",
-    "/admin","/add","/mod","/registration","/add_img","/authorize"})
+    "/admin","/add","/mod","/registration","/add_img","/authorize","/unit"})
 @MultipartConfig()
 public class servlet_prime extends HttpServlet {
     @EJB
@@ -47,9 +48,12 @@ public class servlet_prime extends HttpServlet {
     @EJB
     PictureFacade pictureFacade = new PictureFacade();
     long id = 1;
+    int i = 0;
     User user;
     Unit unit;
     Picture picture;
+    List<Unit> items;
+    List<Unit> units;
     
     
     /**
@@ -74,6 +78,7 @@ public class servlet_prime extends HttpServlet {
         pers.setEmail("example@gmail.com");
         pers.setPassword("12345");
         userFacade.create(pers);
+        
         }
     }
 
@@ -83,14 +88,36 @@ public class servlet_prime extends HttpServlet {
         String path = request.getServletPath();
         switch (path){
             case "/index":
+                units = unitFacade.findByID(id);
+                items = new ArrayList();
+                i = 0;
+                while (i<3){
+                    try {
+                        items.add(units.get(units.size()-i-1));
+                        i++;
+                    } catch (Exception e) {
+                        break;
+                    } 
+                }
+                request.setAttribute("items", items);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
-                List<Unit> items = unitFacade.findByID(id);
-                System.out.println(items);
                 break;
             case "/reg":
                 request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
                 break;
             case "/admin":
+                units = unitFacade.findByID(id);
+                items = new ArrayList();
+                i = 0;
+                while (i<3){
+                    try {
+                        items.add(units.get(units.size()-i-1));
+                        i++;
+                    } catch (Exception e) {
+                        break;
+                    } 
+                }
+                request.setAttribute("items", items);
                 request.setAttribute("name", user.getName());
                 request.setAttribute("surname", user.getSurname());
                 request.getRequestDispatcher("WEB-INF/prime_pages/admin.jsp").forward(request, response);
@@ -119,7 +146,7 @@ public class servlet_prime extends HttpServlet {
                 unit = new Unit();
                 List<Part> fileParts = request.getParts().stream().filter( part -> "image".equals(part.getName())).collect(Collectors.toList());
                 String user_folder = user.getName()+"_"+user.getSurname();
-                String imagesFolder = "C:\\uploadFiles\\"+user_folder+"\\";
+                String imagesFolder = "C:\\uploadFiles\\"+user_folder;
                 for(Part filePart : fileParts){
                     String pathToFile = imagesFolder + File.separatorChar
                                     +getFileName(filePart);
@@ -135,10 +162,9 @@ public class servlet_prime extends HttpServlet {
                        writeToFile(resize(tempFile),pathToFile);
                        tempFile.delete();
                     }
-                    String description = request.getParameter("description");
                     picture = new Picture();
-                    picture.setDescription(description);
                     picture.setPathToFile(pathToFile);
+                    
                     pictureFacade.create(picture);
                 }    
                 unit.setUser(user);
@@ -170,6 +196,13 @@ public class servlet_prime extends HttpServlet {
                         request.getRequestDispatcher("/index").forward(request, response);
                     }
                 }
+                break;
+            case "/unit":
+                long unit_id = Long.parseLong(request.getParameter("unit_id"));
+                Unit state = unitFacade.find(unit_id);
+                request.setAttribute("state", state);
+                System.out.println(unit_id);
+                request.getRequestDispatcher("WEB-INF/prime_pages/unit.jsp").forward(request, response);
                 break;
         }
     }

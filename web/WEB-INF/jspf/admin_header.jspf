@@ -15,23 +15,24 @@
     <div class="wrapper">
         <header>
             <a href="index" class="headline"><h1>Tmart.ee</h1></a>
-            <nav class="menu">
-                <ul class="tmenu">
-                    <li><a href="#">Категории</a>
-                    <ul class="dmenu">
-                        <li> <a href="#">Хронология</a></li>
-                        <li> <a href="#">Стиль</a></li>
-                        <li> <a href="#">Размер</a></li>
-                        <li> |</li>
-                        <li> <a href="about.html">Биография</a></li>
-                        <li> <a href="tech.html">Тех. поддержка</a></li>   
-                        <li> <a href="add">Добавление статьи</a></li>
-                    </ul>
-                    </li>
-                </ul>
-            </nav>
+            
             <div class="icon">
-                <p><a href="person"><img src="img/author/ico_author.png" alt=""></a></p>
-                <p>${name} <br> ${surname}</p>
+                <div class="icons">
+                    <p><img src="img/author/ico_author.png" alt="aaa" onclick="show()"></p>
+                    <p>${name} <br> ${surname}</p>
+                </div>
+                <div class="functions">
+                    <p>
+                        <hr>
+                        <a href="add">Добавление статьи</a>
+                        <br>
+                        <hr>
+                        <a href="profile">Редактирование профиля</a>
+                        <br>
+                        <hr>
+                        <a href="index">Выход</a>
+                        <hr>
+                    </p>
+                </div>
             </div>
         </header>

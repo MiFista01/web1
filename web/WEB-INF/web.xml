@@ -6,7 +6,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
     <jsp-config>
         <jsp-property-group>
@@ -21,6 +21,7 @@
             <display-name>admin</display-name>
             <url-pattern>/WEB-INF/prime_pages/add.jsp</url-pattern>
             <url-pattern>/WEB-INF/prime_pages/admin.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/unit.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
             <include-prelude>/WEB-INF/jspf/admin_header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>

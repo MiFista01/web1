@@ -21,7 +21,6 @@ public class Picture implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String description;
     private String pathToFile;
 
     public Long getId() {
@@ -30,14 +29,6 @@ public class Picture implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getPathToFile() {
@@ -50,7 +41,7 @@ public class Picture implements Serializable {
 
     @Override
     public String toString() {
-        return "Picture{" + "id=" + id + ", description=" + description + ", pathToFile=" + pathToFile + '}';
+        return "Picture{" + "id=" + id + ", pathToFile=" + pathToFile + '}';
     }
     
     
