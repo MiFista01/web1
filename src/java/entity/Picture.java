@@ -23,8 +23,6 @@ public class Picture implements Serializable {
     private Long id;
     private String description;
     private String pathToFile;
-    @OneToOne
-    private Unit unit;
 
     public Long getId() {
         return id;

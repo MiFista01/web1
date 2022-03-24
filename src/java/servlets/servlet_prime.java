@@ -46,7 +46,11 @@ public class servlet_prime extends HttpServlet {
     UnitFacade unitFacade = new UnitFacade();
     @EJB
     PictureFacade pictureFacade = new PictureFacade();
-    long id = 0;
+    long id = 1;
+    User user;
+    Unit unit;
+    Picture picture;
+    
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -77,29 +81,26 @@ public class servlet_prime extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String path = request.getServletPath();
-        User user;
-        Unit unit;
         switch (path){
             case "/index":
                 request.getRequestDispatcher("index.jsp").forward(request, response);
+                List<Unit> items = unitFacade.findByID(id);
+                System.out.println(items);
                 break;
             case "/reg":
                 request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
                 break;
             case "/admin":
-                user = userFacade.find(id);
                 request.setAttribute("name", user.getName());
                 request.setAttribute("surname", user.getSurname());
                 request.getRequestDispatcher("WEB-INF/prime_pages/admin.jsp").forward(request, response);
                 break;
             case "/add":
-                user = userFacade.find(id);
                 request.setAttribute("name", user.getName());
                 request.setAttribute("surname", user.getSurname());
                 request.getRequestDispatcher("WEB-INF/prime_pages/add.jsp").forward(request, response);
                 break;
             case "/mod":
-                user = userFacade.find(id);
                 request.setAttribute("name", user.getName());
                 request.setAttribute("surname", user.getSurname());
                 request.getRequestDispatcher("WEB-INF/prime_pages/mod.jsp").forward(request, response);
@@ -117,7 +118,8 @@ public class servlet_prime extends HttpServlet {
             case "/add_img":
                 unit = new Unit();
                 List<Part> fileParts = request.getParts().stream().filter( part -> "image".equals(part.getName())).collect(Collectors.toList());
-                String imagesFolder = "C:\\uploadFiles\\";
+                String user_folder = user.getName()+"_"+user.getSurname();
+                String imagesFolder = "C:\\uploadFiles\\"+user_folder+"\\";
                 for(Part filePart : fileParts){
                     String pathToFile = imagesFolder + File.separatorChar
                                     +getFileName(filePart);
@@ -134,14 +136,15 @@ public class servlet_prime extends HttpServlet {
                        tempFile.delete();
                     }
                     String description = request.getParameter("description");
-                    Picture picture = new Picture();
+                    picture = new Picture();
                     picture.setDescription(description);
                     picture.setPathToFile(pathToFile);
                     pictureFacade.create(picture);
                 }    
+                unit.setUser(user);
+                unit.setPicture(picture);
                 unit.setPrice(request.getParameter("price"));
-                unit.setDates(request.getParameter("year"));
-                unit.setKind(request.getParameter("kinds"));
+                unit.setYear(request.getParameter("year"));
                 unit.setKind(request.getParameter("kinds"));
                 unit.setDescription(request.getParameter("description"));
                 unitFacade.create(unit);
@@ -155,8 +158,17 @@ public class servlet_prime extends HttpServlet {
                 if (aut_user == null){
                     request.getRequestDispatcher("/index").forward(request, response);
                 }else{
-                    id = aut_user.getId();
-                    request.getRequestDispatcher("/admin").forward(request, response);
+                    if(aut_user.getPassword().equals(password)){
+                        user = aut_user;
+                        if(aut_user.getId()==1){
+                            request.getRequestDispatcher("/admin").forward(request, response);
+                        }
+                        else{
+                            request.getRequestDispatcher("/index").forward(request, response);
+                        }
+                    }else{
+                        request.getRequestDispatcher("/index").forward(request, response);
+                    }
                 }
                 break;
         }

@@ -7,24 +7,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <main>
     <h2 class="topic">Новинки</h2>
-    <!--<article>
-        <a href=""><img src="img/post1.jpg" alt="aaa"></a>
-        <p>
-            Год-
-            <br>
-            Жанры:
-            <br>
-            Текст...
-        </p>
-    </article>-->
+    
     <c:forEach items="${items}" var="unit">
         <article>
-        <a href=""><img src="img/post1.jpg" alt="aaa"></a>
+        <a href=""><img src="unit.picture.PathToFile" alt="aaa"></a>
+        <p>
+            Цена- ${unit.price}
+        </p>
         <p>
             Год- ${unit.year}
-            <br>
+        </p>
+        <p>
             Жанры:${unit.kinds}
-            <br>
+        </p>
+        <p>
             ${unit.description}
         </p>
     </article>

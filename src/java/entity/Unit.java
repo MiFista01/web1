@@ -23,13 +23,14 @@ public class Unit implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Part image;
     private String price;
-    private String dates;
+    private String year;
     private String kind;
     private String description;
     @OneToOne
     private User user;
+    @OneToOne
+    private Picture picture;
 
     public Long getId() {
         return id;
@@ -37,14 +38,6 @@ public class Unit implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Part getImage() {
-        return image;
-    }
-
-    public void setImage(Part image) {
-        this.image = image;
     }
 
     public String getPrice() {
@@ -55,12 +48,12 @@ public class Unit implements Serializable{
         this.price = price;
     }
 
-    public String getDates() {
-        return dates;
+    public String getYear() {
+        return year;
     }
 
-    public void setDates(String dates) {
-        this.dates = dates;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getKind() {
@@ -79,9 +72,25 @@ public class Unit implements Serializable{
         this.description = description;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
+
     @Override
     public String toString() {
-        return "Unit{" + "id=" + id + ", image=" + image + ", price=" + price + ", dates=" + dates + ", kind=" + kind + ", description=" + description + '}';
+        return "Unit{" + "id=" + id + ", price=" + price + ", year=" + year + ", kind=" + kind + ", description=" + description + ", user=" + user + ", picture=" + picture + '}';
     }
 
     
