@@ -21,20 +21,19 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    justify-items: center;
     flex-wrap: wrap;
-    height: 200px;
+    align-items: baseline;
+    height: 30vh;
     width: 100%;
     background-color: rgb(53, 53, 53);
     background-image: url(../img/vremena_goda.png);
     background-size: 300px;
 }
 header .headline{
-    font-size: 35px;
-    width: 200px;
+    font-size: 2.5vw;
+    width: 20%;
     margin-left: 1%;
-    margin-top: -9%;
-    background-color: aqua;
 }
 header .menu{
     display: flex;
@@ -135,6 +134,7 @@ main{
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    align-items: stretch;
     float: left;
     width: 100%;
     margin-top: 1%;
@@ -148,8 +148,7 @@ main article{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20vw;
-    height: 30vw;
+    width: 33%;
     padding: 20px;
     box-sizing: border-box;
     font-size: 15px;

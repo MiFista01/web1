@@ -18,7 +18,7 @@
                 <br>
                 Жанры: ${unit.getKind()}
                 <br>
-                Описание: ${unit.getDescription().substring(0,200)}...
+                Описание: ${unit.getDescription()}
             </p>
         </article>
     </c:forEach>

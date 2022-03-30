@@ -8,6 +8,10 @@
 <main class="reg">
     <form action="registration" class="registration" method="POST">
         <div>
+            <label for="name">Логин</label>
+            <input required type="text" name="login" id="name">
+        </div>
+        <div>
             <label for="name">Имя</label>
             <input required type="text" name="name" id="name">
         </div>

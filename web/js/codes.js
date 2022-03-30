@@ -15,5 +15,12 @@ function change(){
 let numb = 0;
 function show(){
     numb = numb+1;
-    console.log(numb);
+    if (numb%2 == 1) {
+        document.getElementsByClassName('functions')[0].style = "opacity: 1;";
+        document.getElementsByClassName('functions')[0].hidden = false;
+    } else {
+        document.getElementsByClassName('functions')[0].style = "opacity: 0;";
+        document.getElementsByClassName('functions')[0].hidden = true;
+        numb = 0;
+    }
 }

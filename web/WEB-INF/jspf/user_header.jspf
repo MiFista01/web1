@@ -14,25 +14,22 @@
 <body>
     <div class="wrapper">
         <header>
-            <a href="index" class="headline"><h1>Tmart.ee</h1></a>
+            <a href="admin" class="headline"><h1>Tmart.ee</h1></a>
             
             <div class="icon">
                 <div class="icons">
                     <p><img src="img/author/ico_author.png" alt="aaa" onclick="show()"></p>
                     <p>${name} <br> ${surname}</p>
                 </div>
-                <div class="functions">
-                    <p>
-                        <hr>
-                        <a href="add">Добавление статьи</a>
-                        <br>
-                        <hr>
-                        <a href="profile">Редактирование профиля</a>
-                        <br>
-                        <hr>
-                        <a href="index">Выход</a>
-                        <hr>
-                    </p>
+                <div hidden class="functions">
+                    <hr>
+                    <a href="add">Добавление статьи</a>
+                    <hr>
+                    <a href="profile">Редактирование профиля</a>
+                    <hr>
+                    <a href="index">Выход</a>
+                    <hr>
                 </div>
+
             </div>
         </header>

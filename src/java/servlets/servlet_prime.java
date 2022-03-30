@@ -72,11 +72,14 @@ public class servlet_prime extends HttpServlet {
         super.init(); //To change body of generated methods, choose Tools | Templates.
         if(userFacade.count() == 0){
         User pers = new User();
+        int role = 3;
+        pers.setLogin("admin");
         pers.setName("Tatjana");
         pers.setSurname("Matskevits");
         pers.setPhone("XXXXXX");
         pers.setEmail("example@gmail.com");
         pers.setPassword("12345");
+        pers.setRole(role);
         userFacade.create(pers);
         
         }
@@ -93,11 +96,17 @@ public class servlet_prime extends HttpServlet {
                 i = 0;
                 while (i<3){
                     try {
-                        items.add(units.get(units.size()-i-1));
+                        Unit state = units.get(units.size()-i-1);
+                        try {
+                            String description = state.getDescription().substring(0,150)+"...";
+                            state.setDescription(description);
+                        } catch (Exception e) {
+                        }
+                        items.add(state);
                         i++;
                     } catch (Exception e) {
                         break;
-                    } 
+                    }
                 }
                 request.setAttribute("items", items);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -111,11 +120,17 @@ public class servlet_prime extends HttpServlet {
                 i = 0;
                 while (i<3){
                     try {
-                        items.add(units.get(units.size()-i-1));
+                        Unit state = units.get(units.size()-i-1);
+                        try {
+                            String description = state.getDescription().substring(0,150)+"...";
+                            state.setDescription(description);
+                        } catch (Exception e) {
+                        }
+                        items.add(state);
                         i++;
                     } catch (Exception e) {
                         break;
-                    } 
+                    }
                 }
                 request.setAttribute("items", items);
                 request.setAttribute("name", user.getName());
@@ -131,16 +146,6 @@ public class servlet_prime extends HttpServlet {
                 request.setAttribute("name", user.getName());
                 request.setAttribute("surname", user.getSurname());
                 request.getRequestDispatcher("WEB-INF/prime_pages/mod.jsp").forward(request, response);
-                break;
-            case "/registration":
-                User pers = new User();
-                pers.setName(request.getParameter("name"));
-                pers.setSurname(request.getParameter("surname"));
-                pers.setPhone(request.getParameter("phone"));
-                pers.setEmail(request.getParameter("email"));
-                pers.setPassword(request.getParameter("password"));
-                userFacade.create(pers);
-                request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
                 break;
             case "/add_img":
                 unit = new Unit();
@@ -176,17 +181,37 @@ public class servlet_prime extends HttpServlet {
                 unitFacade.create(unit);
                 request.getRequestDispatcher("/add").forward(request, response);
                 break;
+            case "/registration":
+                User pers = new User();
+                pers.setName(request.getParameter("login"));
+                pers.setName(request.getParameter("name"));
+                pers.setSurname(request.getParameter("surname"));
+                pers.setPhone(request.getParameter("phone"));
+                pers.setEmail(request.getParameter("email"));
+                pers.setPassword(request.getParameter("password"));
+                userFacade.create(pers);
+                request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
+                break;
             case "/authorize":
-                String email = request.getParameter("email");
+                String user_aut = request.getParameter("user");
                 String password = request.getParameter("password");
-                List<User> array = userFacade.findAll();
-                User aut_user = userFacade.findByEmail(email);
+                User aut_user = new User();
+                if(userFacade.findByEmail(user_aut) != null){
+                    aut_user = userFacade.findByEmail(user_aut);
+                }else{
+                    if(userFacade.findByLogin(user_aut) != null){
+                        aut_user = userFacade.findByLogin(user_aut);
+                    }else{
+                        aut_user = null;
+                    }
+                }
+                System.out.println(aut_user);
                 if (aut_user == null){
                     request.getRequestDispatcher("/index").forward(request, response);
                 }else{
                     if(aut_user.getPassword().equals(password)){
-                        user = aut_user;
-                        if(aut_user.getId()==1){
+                    user = aut_user;
+                        if(aut_user.getRole()==3){
                             request.getRequestDispatcher("/admin").forward(request, response);
                         }
                         else{
@@ -194,14 +219,13 @@ public class servlet_prime extends HttpServlet {
                         }
                     }else{
                         request.getRequestDispatcher("/index").forward(request, response);
-                    }
+                        }
                 }
                 break;
             case "/unit":
                 long unit_id = Long.parseLong(request.getParameter("unit_id"));
                 Unit state = unitFacade.find(unit_id);
                 request.setAttribute("state", state);
-                System.out.println(unit_id);
                 request.getRequestDispatcher("WEB-INF/prime_pages/unit.jsp").forward(request, response);
                 break;
         }

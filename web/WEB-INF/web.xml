@@ -23,7 +23,7 @@
             <url-pattern>/WEB-INF/prime_pages/admin.jsp</url-pattern>
             <url-pattern>/WEB-INF/prime_pages/unit.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
-            <include-prelude>/WEB-INF/jspf/admin_header.jspf</include-prelude>
+            <include-prelude>/WEB-INF/jspf/user_header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>
