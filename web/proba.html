@@ -1,35 +1,18 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="css/style.css" type="text/css"/>
-    <script src="js/codes.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <script src='main.js'></script>
 </head>
 <body>
     <div class="wrapper">
         <header>
             <div class="head">
                 <a href="admin" class="headline">Tmart.ee</a>
-                <nav class="menu">
-                    <ul class="tmenu">
-                        <li onclick = "show('dmenu')"><p>Категории</p> </li>
-                    </ul>
-                    <ul class="dmenu">
-                        <li> <a href="chronology">Хронология</a></li>
-                        <li> <a href="#">Стиль</a></li>
-                        <li> <a href="#">Размер</a></li>
-                        <li> |</li>
-                        <li> <a href="about.html">Биография</a></li>
-                        <li> <a href="tech.html">Тех. поддержка</a></li>   
-                        <li> <a href="reg">Регистрация</a></li>                          
-                    </ul>
-                </nav>
                 <div class="icon">
                     <div class="icons">
                         <img src="img/author/ico_author.png" alt="aaa" onclick="show('functions')">
@@ -49,3 +32,17 @@
                 </div>
             </div>
         </header>
+        <main class="page_change_profile">
+            <form action="change_profile">
+                <input type="text" placeholder="Логин" name="login">
+                <input type="text" placeholder="Имя" name="name">
+                <input type="text" placeholder="Фамилия" name="surname">
+                <input type="text" placeholder="Телефон" name="phone">
+                <input type="text" placeholder="Почта" name="email">
+                <input type="text" placeholder="Пароль" name="password">
+                <button type="submit">Изменить</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

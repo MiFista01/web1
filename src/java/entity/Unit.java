@@ -91,6 +91,5 @@ public class Unit implements Serializable{
     public String toString() {
         return "Unit{" + "id=" + id + ", price=" + price + ", year=" + year + ", kind=" + kind + ", description=" + description + ", user=" + user + ", picture=" + picture + '}';
     }
-
     
 }

@@ -11,23 +11,24 @@
 <body>
     <div class="wrapper">
         <header>
-            <a href="admin" class="headline"><h1>Tmart.ee</h1></a>
-            
-            <div class="icon">
-                <div class="icons">
-                    <p><img src="../../img/author/ico_author.png" alt="aaa" onclick="show()"></p>
-                    <p>${name} <br> ${surname}</p>
-                </div>
-                <div hidden class="functions">
-                    <hr>
-                    <a href="add">Добавление статьи</a>
-                    <br>
-                    <hr>
-                    <a href="profile">Редактирование профиля</a>
-                    <br>
-                    <hr>
-                    <a href="index">Выход</a>
-                    <hr>
+            <div class="head">
+                <a href="admin"></a>
+                <div class="icon">
+                    <div class="icons">
+                        <img src="../../img/author/ico_author.png" alt="aaa" onclick="show('functions')">
+                        <p>${name} <br> ${surname}</p>
+                    </div>
+                    <div class="functions">
+                        <hr>
+                        <a href="add">Добавление статьи</a>
+                        <br>
+                        <hr>
+                        <a href="profile">Редактирование профиля</a>
+                        <br>
+                        <hr>
+                        <a href="index">Выход</a>
+                        <hr>
+                    </div>
                 </div>
             </div>
         </header>

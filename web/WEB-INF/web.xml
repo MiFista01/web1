@@ -12,16 +12,18 @@
         <jsp-property-group>
             <display-name>prime</display-name>
             <url-pattern>/index.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/unitForGuest.jsp</url-pattern>
             <url-pattern>/WEB-INF/prime_pages/reg.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
         <jsp-property-group>
-            <display-name>admin</display-name>
-            <url-pattern>/WEB-INF/prime_pages/add.jsp</url-pattern>
+            <display-name>user</display-name>
             <url-pattern>/WEB-INF/prime_pages/admin.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/add.jsp</url-pattern>
             <url-pattern>/WEB-INF/prime_pages/unit.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/page_change_profile.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
             <include-prelude>/WEB-INF/jspf/user_header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>

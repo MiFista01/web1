@@ -9,15 +9,17 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
-    <script src='main.js'></script>
+    <script src="js/codes.js"></script>
 </head>
 <body>
     <div class="wrapper">
         <header>
-            <a href="index" class="headline"><h1>Tmart.ee</h1></a>
-            <nav class="menu">
-                <ul class="tmenu">
-                    <li><a href="#">Категории</a>
+            <div class="head">
+                <a href="admin" class="headline">Tmart.ee</a>
+                <nav class="menu">
+                    <ul class="tmenu">
+                        <li onclick = "show('dmenu')"><p>Категории</p> </li>
+                    </ul>
                     <ul class="dmenu">
                         <li> <a href="#">Хронология</a></li>
                         <li> <a href="#">Стиль</a></li>
@@ -27,22 +29,19 @@
                         <li> <a href="tech.html">Тех. поддержка</a></li>   
                         <li> <a href="reg">Регистрация</a></li>                          
                     </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div class="authorize">
-                <form action="authorize" method="POST">
-                    <div class="inp">
-                        <label for="name">Пользователь</label>
-                        <input required type="text" name="user">
-                    </div>
-                    <div class="inp">
-                        <label for="password">Пароль</label>
-                        <input required type="password" name="password">
-                    </div>
-                    <div class="center">
+                </nav>
+                <div class="authorize">
+                    <form action="authorize" method="POST">
+                        <div class="inp">
+                            <label for="name">Пользователь</label>
+                            <input required type="text" name="user">
+                        </div>
+                        <div class="inp">
+                            <label for="password">Пароль</label>
+                            <input required type="password" name="password">
+                        </div>
                         <input type="submit" value="Вход">
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </header>

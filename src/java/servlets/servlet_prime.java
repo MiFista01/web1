@@ -28,17 +28,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import org.imgscalr.Scalr;
 import session.PictureFacade;
 import session.UnitFacade;
 import session.UserFacade;
-
 /**
  *
  * @author aleksei
  */
 @WebServlet(name = "servlet_prime", loadOnStartup = 1, urlPatterns = {"/index","/reg",
-    "/admin","/add","/mod","/registration","/add_img","/authorize","/unit"})
+    "/admin","/add","/mod","/registration","/add_img","/authorize","/unit","/unitForGuest",
+    "/page_change_profile","/change_profile","/chronology"})
 @MultipartConfig()
 public class servlet_prime extends HttpServlet {
     @EJB
@@ -48,9 +47,11 @@ public class servlet_prime extends HttpServlet {
     @EJB
     PictureFacade pictureFacade = new PictureFacade();
     long id = 1;
+    long unit_id;
     int i = 0;
     User user;
     Unit unit;
+    Unit state;
     Picture picture;
     List<Unit> items;
     List<Unit> units;
@@ -142,10 +143,41 @@ public class servlet_prime extends HttpServlet {
                 request.setAttribute("surname", user.getSurname());
                 request.getRequestDispatcher("WEB-INF/prime_pages/add.jsp").forward(request, response);
                 break;
-            case "/mod":
+            case "/chronology":
                 request.setAttribute("name", user.getName());
                 request.setAttribute("surname", user.getSurname());
-                request.getRequestDispatcher("WEB-INF/prime_pages/mod.jsp").forward(request, response);
+                List<Unit>units = unitFacade.findAll();
+                
+                request.getRequestDispatcher("WEB-INF/prime_pages/chronology.jsp").forward(request, response);
+                break;
+            case "/page_change_profile":
+                request.setAttribute("name", user.getName());
+                request.setAttribute("surname", user.getSurname());
+                request.getRequestDispatcher("WEB-INF/prime_pages/page_change_profile.jsp").forward(request, response);
+                break;
+            case "/change_profile":
+                request.setAttribute("name", user.getName());
+                request.setAttribute("surname", user.getSurname());
+                if(!request.getParameter("login").equals("")){
+                    user.setLogin(request.getParameter("login"));
+                }
+                if(!request.getParameter("name").equals("")){
+                    user.setName(request.getParameter("name"));
+                }
+                if(!request.getParameter("surname").equals("")){
+                    user.setSurname(request.getParameter("surname"));
+                }
+                if(!request.getParameter("phone").equals("")){
+                    user.setPhone(request.getParameter("phone"));
+                }
+                if(!request.getParameter("email").equals("")){
+                    user.setEmail(request.getParameter("email"));
+                }
+                if(!request.getParameter("password").equals("")){
+                    user.setPassword(request.getParameter("password"));
+                }
+                userFacade.edit(user);
+                request.getRequestDispatcher("/page_change_profile").forward(request, response);
                 break;
             case "/add_img":
                 unit = new Unit();
@@ -183,12 +215,13 @@ public class servlet_prime extends HttpServlet {
                 break;
             case "/registration":
                 User pers = new User();
-                pers.setName(request.getParameter("login"));
+                pers.setLogin(request.getParameter("login"));
                 pers.setName(request.getParameter("name"));
                 pers.setSurname(request.getParameter("surname"));
                 pers.setPhone(request.getParameter("phone"));
                 pers.setEmail(request.getParameter("email"));
                 pers.setPassword(request.getParameter("password"));
+                pers.setRole(1);
                 userFacade.create(pers);
                 request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
                 break;
@@ -205,7 +238,6 @@ public class servlet_prime extends HttpServlet {
                         aut_user = null;
                     }
                 }
-                System.out.println(aut_user);
                 if (aut_user == null){
                     request.getRequestDispatcher("/index").forward(request, response);
                 }else{
@@ -214,7 +246,7 @@ public class servlet_prime extends HttpServlet {
                         if(aut_user.getRole()==3){
                             request.getRequestDispatcher("/admin").forward(request, response);
                         }
-                        else{
+                        if(aut_user.getRole()==1){
                             request.getRequestDispatcher("/index").forward(request, response);
                         }
                     }else{
@@ -223,10 +255,18 @@ public class servlet_prime extends HttpServlet {
                 }
                 break;
             case "/unit":
-                long unit_id = Long.parseLong(request.getParameter("unit_id"));
-                Unit state = unitFacade.find(unit_id);
+                request.setAttribute("name", user.getName());
+                request.setAttribute("surname", user.getSurname());
+                unit_id = Long.parseLong(request.getParameter("unit_id"));
+                state = unitFacade.find(unit_id);
                 request.setAttribute("state", state);
                 request.getRequestDispatcher("WEB-INF/prime_pages/unit.jsp").forward(request, response);
+                break;
+            case "/unitForGuest":
+                unit_id = Long.parseLong(request.getParameter("unit_id"));
+                state = unitFacade.find(unit_id);
+                request.setAttribute("state", state);
+                request.getRequestDispatcher("WEB-INF/prime_pages/unitForGuest.jsp").forward(request, response);
                 break;
         }
     }

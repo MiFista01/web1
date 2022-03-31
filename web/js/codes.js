@@ -13,14 +13,16 @@ function change(){
     img.src = localStorage.getItem('my_img');
 }
 let numb = 0;
-function show(){
+function show(name){
     numb = numb+1;
     if (numb%2 == 1) {
-        document.getElementsByClassName('functions')[0].style = "opacity: 1;";
-        document.getElementsByClassName('functions')[0].hidden = false;
+        /*document.getElementsByClassName(name)[0].style = "opacity: 1;";*/
+        document.getElementsByClassName(name)[0].style = "transform: scaleY(1);";
+        /*document.getElementsByClassName(name)[0].hidden = false;*/
     } else {
-        document.getElementsByClassName('functions')[0].style = "opacity: 0;";
-        document.getElementsByClassName('functions')[0].hidden = true;
+        /*document.getElementsByClassName(name)[0].style = "opacity: 0;";*/
+        document.getElementsByClassName(name)[0].style = "transform: scaleY(0);";
+        /*document.getElementsByClassName(name)[0].hidden = true;*/
         numb = 0;
     }
 }
