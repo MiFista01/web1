@@ -9,7 +9,7 @@
 <main>
     <c:forEach items="${items}" var="unit">
         <article>
-            <a href="unit?unit_id=${unit.getId()}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
+            <a href="unitForGuest?unit_id=${unit.getId()}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
             <p>
                 Название картины - ${unit.getArt_name()}
                 <br>

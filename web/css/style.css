@@ -41,7 +41,7 @@ header{
 .head .headline{
     font-size: 4vw;
     font-weight: bold;
-    width: 200px;
+    width: 18vw;
     margin-left: 3%;
 }
 /*Заголовок*/
@@ -49,6 +49,7 @@ header{
 
 /*менюшка*/
 .menu{
+    user-select: none;
 }
 .tmenu {
     list-style-position: inside;
@@ -85,8 +86,14 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
+    width: 18vw;
     margin-right: 3%;
+}
+.authorize p{
+    font-size: 15px;
+    color: whitesmoke;
+    font-weight: bold;
+    margin-bottom: 0.5vh;
 }
 .authorize .inp{
     font-size: 1.3vw;
@@ -108,14 +115,15 @@ header{
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    width: 200px;
-    margin-top: 210px;
+    width: 18vw;
+    margin-top: 35vh;
+    user-select: none;
 }
 .icon .icons{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 80%;
 }
 .icons img{
     width: 40%;
@@ -124,19 +132,19 @@ header{
     text-align: center;
     margin-top: 0px;
     background-color: whitesmoke;
-    padding: 5px;
-    border-radius: 20px;
+    padding: 0.5vw;
+    border-radius: 1.5vw;
     border: 2px solid black;
 }
 .functions{
     border-radius: 0.6vw;
     overflow: hidden;
     transform: scaleY(0);
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
     transform-origin: 0 0;
     background-color: whitesmoke;
     align-items: center;
-    border: 1px solid black;
+    border: 0.1vw solid black;
     width: 120%;
 }
 .functions a{
@@ -165,7 +173,7 @@ header{
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items: start;
+    align-items: center;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 2vw;
@@ -204,7 +212,6 @@ header{
     box-shadow: 0px 0px 10px black;
 }
 .date select{
-    height: 5vh;
     width: 100%;
     text-align: center;
     border: 5px inset dimgray;
@@ -288,6 +295,12 @@ header{
 /*страница редактирования профиля*/
 
 
+/*страница  стилей*/
+.style_choce{
+    width: 100%;
+}
+/*страница  стилей*/
+
 /*страница регистрации*/
 .reg{
     margin-top: -20vh;
@@ -332,7 +345,7 @@ header{
 main{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
     margin-top: -25vh;
@@ -356,16 +369,23 @@ article{
     box-sizing: border-box;
     font-size: 15px;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px 10px black;
+    box-shadow: 0px 0px 10px 5px  black;
     background-color: rgba(0, 0, 0, 0.25);
     overflow: hidden;
     margin-top: 2%;
     margin-bottom: 2%;
 }
+article a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 article img{
     height: 40vh;
-    border-radius: 30px;
-    border: 3px solid black;
+    border-radius: 5%/120%;
+    padding: 5%;
+    background-color: rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 10px 5px  black;
 }
 article p{
     box-sizing: border-box;
@@ -375,8 +395,88 @@ article p{
     padding: 30px;
     background-color: black;
     color: whitesmoke;
+    box-shadow: 0px 0px 10px 5px  black;
+    margin-top: 5vh;
 }
 /*основа*/
+
+
+/*страница с сообщениями*/
+.message{
+    width: 100%;
+    user-select: none;
+}
+.message article{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-between;
+    width: 100%;
+}
+.message a{
+    width: 90%;
+    margin: 1%;
+}
+.message img{
+    width: 100%;
+    height: auto;
+    margin: 0px;
+}
+.message p{
+    margin: 1%;
+}
+.status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.status p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    box-sizing: content-box;
+    width: 100%;
+    border-radius: 10px;
+    width: 100%;
+    border: 5px inset dimgray;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px black;
+    background-color: grey;
+    height: auto;
+    text-align: center;
+    font-size: 4vh;
+    font-weight: bold;
+    color: whitesmoke;
+    margin: 0px;
+    padding: 0px;    
+}
+.change_status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border-radius: 0.6vw;
+    overflow: hidden;
+    transform: scaleY(0);
+    transition-duration: 0.5s;
+    transform-origin: 0 0;
+    background-color: whitesmoke;
+    align-items: center;
+    border: 1px solid black;
+    width: 120%;
+}
+.change_status input{
+    background-color: none;
+    width: 100%;
+}
+/*страница с сообщениями*/
+
 
 /*страница статьи*/
 .page_unit{
@@ -444,26 +544,3 @@ footer{
     color: whitesmoke;
     font-weight: bold;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,12 +1,23 @@
 <%-- 
-    Document   : admin
-    Created on : Mar 4, 2022, 2:09:39 AM
+    Document   : style
+    Created on : Apr 1, 2022, 2:07:27 AM
     Author     : aleksei
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <main>
-    <h2 class="topic">Новинки</h2>
+    <form action="style_choice" class="style_choce">
+        <select required name="kinds" id="kinds" >
+            <option disabled selected>выбор жанра</option>
+            <option value="портрет">портрет</option>
+            <option value="пейзаж">пейзаж</option>
+            <option value="натюрморт">натюрморт</option>
+            <option value="бытовой">бытовой</option>
+            <option value="анималистический">анималистический</option>
+        </select>
+        <button>Изменить выбор</button>
+    </form>
     
     <c:forEach items="${items}" var="unit">
         <article>
@@ -21,6 +32,7 @@
                 Год - ${unit.getYear()}
                 <br>
                 Жанры: ${unit.getKind()}
+                <br>
                 <br>
                 Описание: ${unit.getDescription()}
             </p>

@@ -1,12 +1,14 @@
 <%-- 
-    Document   : chronology
-    Created on : Mar 31, 2022, 1:22:04 PM
+    Document   : user
+    Created on : Apr 1, 2022, 3:22:23 AM
     Author     : aleksei
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <main>
+    <h2 class="topic">Новинки</h2>
+    
     <c:forEach items="${items}" var="unit">
         <article>
             <a href="unit?unit_id=${unit.getId()}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
@@ -20,7 +22,6 @@
                 Год - ${unit.getYear()}
                 <br>
                 Жанры: ${unit.getKind()}
-                <br>
                 <br>
                 Описание: ${unit.getDescription()}
             </p>

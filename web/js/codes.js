@@ -13,16 +13,20 @@ function change(){
     img.src = localStorage.getItem('my_img');
 }
 let numb = 0;
+let class_name = "";
 function show(name){
-    numb = numb+1;
-    if (numb%2 == 1) {
-        /*document.getElementsByClassName(name)[0].style = "opacity: 1;";*/
-        document.getElementsByClassName(name)[0].style = "transform: scaleY(1);";
-        /*document.getElementsByClassName(name)[0].hidden = false;*/
+    if (document.getElementsByClassName(name)[0].style.transform == "scaleY(1)") {
+        document.getElementsByClassName(name)[0].style.transform = "scaleY(0)";
     } else {
-        /*document.getElementsByClassName(name)[0].style = "opacity: 0;";*/
-        document.getElementsByClassName(name)[0].style = "transform: scaleY(0);";
-        /*document.getElementsByClassName(name)[0].hidden = true;*/
-        numb = 0;
+        document.getElementsByClassName(name)[0].style.transform = "scaleY(1)";
+    }
+    
+}
+function show_status(id){
+    let unit = document.getElementById(id);
+    if (unit.style.transform == "scaleY(1)") {
+        unit.style.transform = "scaleY(0)";
+    } else {
+        unit.style.transform = "scaleY(1)";
     }
 }

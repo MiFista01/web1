@@ -15,29 +15,31 @@
     <div class="wrapper">
         <header>
             <div class="head">
-                <a href="user" class="headline">Tmart.ee</a>
+                <a href="admin" class="headline">Tmart.ee</a>
                 <nav class="menu">
                     <ul class="tmenu">
                         <li onclick = "show('dmenu')"><p>Категории</p> </li>
                     </ul>
                     <ul class="dmenu">
-                        <li> <a href="chronology">Хронология</a></li>
-                        <li> <a href="style">Стиль</a></li>
-                        <li> <a href="size">Размер</a></li>
+                        <li> <a href="chronology_for_admin">Хронология</a></li>
+                        <li> <a href="style_for_admin">Стиль</a></li>
+                        <li> <a href="size_for_admin">Размер</a></li>
                         <li> |</li>
                         <li> <a href="page_about">Биография</a></li>                      
                     </ul>
                 </nav>
-                <div class="icon user">
+                <div class="icon">
                     <div class="icons">
                         <img src="img/author/ico_author.png" alt="aaa" onclick="show('functions')">
                         <p>${name} <br> ${surname}</p>
                     </div>
                     <div class="functions">
                         <hr>
+                        <a href="add">Добавление статьи</a>
+                        <hr>
                         <a href="page_change_profile">Редактирование профиля</a>
                         <hr>
-                        <a href="message_user">Сообщения</a>
+                        <a href="message_admin">Сообщения</a>
                         <hr>
                         <a href="index">Выход</a>
                         <hr>

@@ -10,22 +10,40 @@
     </welcome-file-list>
     <jsp-config>
         <jsp-property-group>
-            <display-name>prime</display-name>
-            <url-pattern>/index.jsp</url-pattern>
+            <display-name>guest</display-name>
             <url-pattern>/WEB-INF/prime_pages/unitForGuest.jsp</url-pattern>
+            <url-pattern>/index.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/size_for_guest.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/chronology_for_guest.jsp</url-pattern>
             <url-pattern>/WEB-INF/prime_pages/reg.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/style_for_guest.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
         <jsp-property-group>
             <display-name>user</display-name>
-            <url-pattern>/WEB-INF/prime_pages/admin.jsp</url-pattern>
-            <url-pattern>/WEB-INF/prime_pages/add.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/message_user.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/user.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/style.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/size.jsp</url-pattern>
             <url-pattern>/WEB-INF/prime_pages/unit.jsp</url-pattern>
-            <url-pattern>/WEB-INF/prime_pages/page_change_profile.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/chronology.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
             <include-prelude>/WEB-INF/jspf/user_header.jspf</include-prelude>
+            <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
+        </jsp-property-group>
+        <jsp-property-group>
+            <display-name>admin</display-name>
+            <url-pattern>/WEB-INF/prime_pages/unit_admin.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/size_for_admin.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/add.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/admin.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/chronology_for_admin.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/message.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/style_for_admin.jsp</url-pattern>
+            <url-pattern>/WEB-INF/prime_pages/page_change_profile.jsp</url-pattern>
+            <include-prelude>/WEB-INF/jspf/admin_header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>

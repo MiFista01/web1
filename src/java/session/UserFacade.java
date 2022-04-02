@@ -42,4 +42,11 @@ public class UserFacade extends AbstractFacade<User> {
             return null;
         }
     }
+    public User findByid(int id) {
+        try {
+            return (User) em.createQuery("SELECT u FROM User u WHERE u.id=:id").setParameter("id", id).getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

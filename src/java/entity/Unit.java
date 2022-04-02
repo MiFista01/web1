@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,10 +19,12 @@ import javax.persistence.OneToOne;
  * @author aleksei
  */
 @Entity
-public class Unit implements Serializable{
+public class Unit implements Serializable, Comparator<Unit>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String art_name;
+    private String size;
     private String price;
     private String year;
     private String kind;
@@ -87,9 +90,41 @@ public class Unit implements Serializable{
         this.picture = picture;
     }
 
+    public String getArt_name() {
+        return art_name;
+    }
+
+    public void setArt_name(String art_name) {
+        this.art_name = art_name;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     @Override
     public String toString() {
-        return "Unit{" + "id=" + id + ", price=" + price + ", year=" + year + ", kind=" + kind + ", description=" + description + ", user=" + user + ", picture=" + picture + '}';
+        return "Unit{" + "id=" + id + ", art_name=" + art_name + ", size=" + size + ", price=" + price + ", year=" + year + ", kind=" + kind + ", description=" + description + ", user=" + user + ", picture=" + picture + '}';
+    }
+
+
+    public Unit() {
+        this.id = id;
+        this.price = price;
+        this.year = year;
+        this.kind = kind;
+        this.description = description;
+        this.user = user;
+        this.picture = picture;
+    }
+
+    @Override
+    public int compare(Unit o1, Unit o2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

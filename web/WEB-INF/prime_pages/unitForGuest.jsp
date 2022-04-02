@@ -11,6 +11,8 @@
             <img src="insertFile/${state.picture.pathToFile}" alt="aaa">
         </div>
         <div class="mass">
+            <p class="inf">Название картины- ${state.art_name}</p>
+            <p class="inf">Размер: ${state.size}</p>
             <p class="inf">Цена - ${state.price}</p>
             <p class="inf">Дата написания: ${state.year}</p>
             <p class="inf">Жанры: ${state.kind}</p>

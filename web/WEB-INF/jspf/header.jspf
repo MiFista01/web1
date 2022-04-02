@@ -15,22 +15,22 @@
     <div class="wrapper">
         <header>
             <div class="head">
-                <a href="admin" class="headline">Tmart.ee</a>
+                <a href="index" class="headline">Tmart.ee</a>
                 <nav class="menu">
                     <ul class="tmenu">
                         <li onclick = "show('dmenu')"><p>Категории</p> </li>
                     </ul>
                     <ul class="dmenu">
-                        <li> <a href="#">Хронология</a></li>
-                        <li> <a href="#">Стиль</a></li>
-                        <li> <a href="#">Размер</a></li>
+                        <li> <a href="chronology_for_guest">Хронология</a></li>
+                        <li> <a href="style_for_guest">Стиль</a></li>
+                        <li> <a href="size_for_guest">Размер</a></li>
                         <li> |</li>
                         <li> <a href="about.html">Биография</a></li>
-                        <li> <a href="tech.html">Тех. поддержка</a></li>   
                         <li> <a href="reg">Регистрация</a></li>                          
                     </ul>
                 </nav>
                 <div class="authorize">
+                    <p>Автор: ${name} ${surname}</p>
                     <form action="authorize" method="POST">
                         <div class="inp">
                             <label for="name">Пользователь</label>

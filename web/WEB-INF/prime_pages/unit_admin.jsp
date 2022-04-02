@@ -1,29 +1,27 @@
 <%-- 
-    Document   : add
-    Created on : Mar 9, 2022, 6:22:59 AM
-    Author     : aleksei
+    Document   : unit
+    Created on : Mar 24, 2022, 10:50:42 AM
+    Author     : pupil
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <main class="add">
-    <form action="add_img" method="POST" enctype="multipart/form-data">
+    <form action="change_img" method="POST" enctype="multipart/form-data">
         <div class="add_img">
-            <img src="img/author/img_add.png" alt="" onclick="click_input()" id="img">
-            <p><input hidden required type="file" name="image" id="input_img" onchange="change()"></p> 
+            <img src="insertFile/${state.picture.pathToFile}" alt="aaa">
         </div>
         <div class="text">
             <div class="date">
                 <label for="art_name">Название картины:</label>
-                <input required type="text" name="art_name" id="art_name">
+                <input type="text" name="art_name" id="art_name" value="${state.art_name}">
                 <label for="size">Размер картины:</label>
-                <input required type="text" name="size" id="size">
+                <input type="text" name="size" id="size" value="${state.size}">
                 <label for="price">Цена:</label>
-                <input required type="number" name="price" id="price">
+                <input type="number" name="price" id="price" value="${state.price}">
                 <label for="year">Год написания</label>
-                <input required type="date" name="year" id="year">
+                <input type="date" name="year" id="year" value="${state.year}">
                 <label for="kinds">Жанры</label>
-                <select required name="kinds" id="kinds" >
+                <select name="kinds" id="kinds" value="${state.kind}">
                     <option disabled selected>выбор жанра</option>
                     <option value="портрет">портрет</option>
                     <option value="пейзаж">пейзаж</option>
@@ -34,9 +32,11 @@
             </div>
             <div class="description">
                 <label for="description">Описание</label>
-                <textarea required name="description" id="description" cols="30" rows="10"></textarea>
+                <textarea name="description" id="description" cols="30" rows="10" >${state.description}</textarea>
             </div>
-            <button type="submit">Создать</button>
+                <input hidden="" type="text" name="id" value="${state.id}">
+            <button type="submit">Изменить</button>
         </div>
     </form>
 </main>
+
