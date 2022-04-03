@@ -40,4 +40,16 @@
             <button type="submit">Создать</button>
         </div>
     </form>
+    <div class="scroll">
+        <img src="img/up.png" onclick="scroll_up('imgs')">
+        <div class="imgs_cont">
+            <div class="imgs" id="imgs">
+                <c:forEach items="${pictures}" var="unit">
+                    <img src="insertFile/${unit.picture.pathToFile}">
+                </c:forEach>
+            </div>
+        </div>
+        <img src="img/down.png" onclick="scroll_down('imgs')">
+        <input hidden type="text" value="${lenght}" id="lenght">
+    </div>
 </main>

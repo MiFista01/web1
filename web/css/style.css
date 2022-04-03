@@ -1,19 +1,22 @@
-body{
+body {
     background-image: url(../img/body_back.png);
     background-attachment: fixed;
 }
-.wrapper{
+
+.wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
-header{
+
+header {
     width: 100%;
     height: 50vh;
 }
-.head{
+
+.head {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -23,93 +26,115 @@ header{
     background-image: url(../img/vremena_goda.png);
     background-size: 45vh;
 }
-.head a{
+
+.head a {
     text-decoration: none;
     color: whitesmoke;
 }
-.head ul{
+
+.head ul {
     list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     font-weight: bold;
     color: whitesmoke;
-    
 }
 
+
 /*Заголовок*/
-.head .headline{
+
+.head .headline {
     font-size: 4vw;
     font-weight: bold;
     width: 18vw;
     margin-left: 3%;
 }
+
+
 /*Заголовок*/
 
 
 /*менюшка*/
-.menu{
+
+.menu {
     user-select: none;
 }
+
 .tmenu {
     list-style-position: inside;
     margin: 0;
     padding: 0;
 }
-.tmenu li{
+
+.tmenu li {
     text-align: center;
     font-size: 2vw;
     margin: auto;
 }
-.tmenu li p{
+
+.tmenu li p {
     margin: 0%;
     cursor: pointer;
 }
-.dmenu{
+
+.dmenu {
     list-style-position: inside;
     margin: 0;
     padding: 0;
     transform: scaleY(0);
     transform-origin: 0 0;
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
 }
-.dmenu li{
+
+.dmenu li {
     width: auto;
     font-size: 1.3vw;
     margin: 0vw 0.2vw 0vw;
 }
+
+
 /*менюшка*/
 
 
 /*авторизация*/
-.authorize{
+
+.authorize {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 18vw;
 }
-.authorize p{
+
+.authorize p {
     font-size: 15px;
     color: whitesmoke;
     font-weight: bold;
     margin-bottom: 0.5vh;
 }
-.authorize .inp{
+
+.authorize .inp {
     font-size: 1.3vw;
     color: whitesmoke;
     font-weight: bold;
 }
-.authorize .inp input{
+
+.authorize .inp input {
     width: 96%;
 }
-.authorize input[type='submit']{
+
+.authorize input[type='submit'] {
     width: 50%;
     margin: 1vh 25% 0vh;
 }
+
+
 /*авторизация*/
 
+
 /*юзер*/
-.head .icon{
+
+.head .icon {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -118,19 +143,23 @@ header{
     margin-top: 32vh;
     user-select: none;
 }
-.head .user{
+
+.head .user {
     margin-top: 25vh;
 }
-.icon .icons{
+
+.icon .icons {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80%;
 }
-.icons img{
+
+.icons img {
     width: 40%;
 }
-.icons p{
+
+.icons p {
     text-align: center;
     margin-top: 0px;
     background-color: whitesmoke;
@@ -138,7 +167,8 @@ header{
     border-radius: 1.5vw;
     border: 2px solid black;
 }
-.functions{
+
+.functions {
     border-radius: 0.6vw;
     overflow: hidden;
     transform: scaleY(0);
@@ -149,34 +179,44 @@ header{
     border: 0.1vw solid black;
     width: 120%;
 }
-.functions a{
+
+.functions a {
     color: black;
     font-size: 17px;
     text-align: center;
     width: 100%;
     margin-left: 2vw;
 }
-.functions hr{
+
+.functions hr {
     color: black;
     height: 1px;
     background-color: black;
     margin: 1.5vh 1vw 1.5vh;
 }
+
+
 /*юзер*/
 
 
 /*страница добавления статьи*/
-.add{
+
+.add {
     margin-top: -25vh;
     margin-bottom: 5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
-.add form{
+
+.add form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    width: 100%;
+    width: 80%;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 2vw;
     box-sizing: border-box;
@@ -185,28 +225,33 @@ header{
     box-shadow: 0px 0px 20px 5px black;
     margin-top: 5vh;
 }
-.add .add_img{
+
+.add .add_img {
     width: 35%;
 }
-.add_img img{
+
+.add_img img {
     width: 100%;
     border-radius: 10%;
     box-shadow: 0px 0px 20px 5px black;
     border: 2px solid black;
 }
-.text{
+
+.text {
     width: 60%;
     display: flex;
     flex-direction: column;
     align-items: baseline;
 }
-.date{
+
+.date {
     display: flex;
     flex-direction: column;
     width: 30%;
     font-size: 20px;
 }
-.date input{
+
+.date input {
     height: 3vh;
     width: 90%;
     text-align: center;
@@ -215,7 +260,8 @@ header{
     box-shadow: 0px 0px 10px black;
     background-color: whitesmoke;
 }
-.date select{
+
+.date select {
     width: 100%;
     text-align: center;
     border: 5px inset dimgray;
@@ -223,7 +269,8 @@ header{
     box-shadow: 0px 0px 10px black;
     background-color: whitesmoke;
 }
-.description{
+
+.description {
     margin-top: 2vh;
     display: flex;
     flex-direction: column;
@@ -231,7 +278,8 @@ header{
     width: 100%;
     font-size: 20px;
 }
-.description textarea{
+
+.description textarea {
     width: 100%;
     height: 40vh;
     resize: none;
@@ -243,7 +291,8 @@ header{
     margin: 10px 0px 10px;
     box-shadow: 0px 0px 20px 5px black;
 }
-.add button{
+
+.add button {
     margin-top: 5vh;
     width: 30%;
     height: 8vh;
@@ -253,19 +302,75 @@ header{
     font-size: 25px;
     border-radius: 10px;
 }
-.add button:hover{
+
+.add button:hover {
     font-weight: bold;
 }
+
+.add .scroll {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    height: 80vh;
+}
+
+.scroll img {
+    margin: 2%;
+    width: 25%;
+}
+
+.scroll .imgs_cont {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border: 1px solid black;
+    box-shadow: 0px 0px 20px 5px black;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.imgs_cont .imgs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 10px 5px black;
+    box-sizing: border-box;
+    border: 1px solid black;
+    box-shadow: 0px 0px 20px 5px black;
+    width: 100%;
+    margin-top: 0px;
+    padding: 10%;
+    border-radius: 5%/120%;
+    transition-duration: 0.2s;
+}
+
+.imgs_cont .imgs img {
+    border-radius: 5%/120%;
+    padding: 2vh;
+    background-color: rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 10px 5px black;
+    height: 20vh;
+    width: auto;
+    margin: 2vh;
+}
+
+
 /*страница добавления статьи*/
 
 
 /*страница редактирования профиля*/
-.change_profile{
+
+.change_profile {
     margin-top: -20vh;
     margin-bottom: 5vh;
     width: 50%;
 }
-.change_profile form{
+
+.change_profile form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -279,7 +384,8 @@ header{
     border-radius: 10%;
     box-shadow: 0px 0px 20px 5px black;
 }
-.change_profile input{
+
+.change_profile input {
     width: 80%;
     margin: 1vh 0vw 1vh;
     height: 6vh;
@@ -287,7 +393,8 @@ header{
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
 }
-.change_profile button{
+
+.change_profile button {
     margin-top: 3vh;
     width: 30%;
     height: 6vh;
@@ -297,22 +404,30 @@ header{
     font-size: 20px;
     border-radius: 10px;
 }
+
+
 /*страница редактирования профиля*/
 
 
 /*страница  стилей*/
-.style_choce{
+
+.style_choce {
     width: 100%;
 }
+
+
 /*страница  стилей*/
 
+
 /*страница регистрации*/
-.reg{
+
+.reg {
     margin-top: -20vh;
     margin-bottom: 5vh;
     width: 60%;
 }
-.reg form{
+
+.reg form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -326,16 +441,19 @@ header{
     border-radius: 10%;
     box-shadow: 0px 0px 20px 5px black;
 }
-.reg div{
+
+.reg div {
     width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.reg label{
+
+.reg label {
     font-size: 20px;
 }
-.reg input{
+
+.reg input {
     width: 80%;
     margin: 1vh 0vw 1vh;
     height: 6vh;
@@ -343,11 +461,14 @@ header{
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
 }
+
+
 /*страница регистрации*/
 
 
 /*основа*/
-main{
+
+main {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -355,7 +476,8 @@ main{
     width: 100%;
     margin-top: -25vh;
 }
-main h2{
+
+main h2 {
     width: 100%;
     text-align: center;
     background-color: rgb(46, 46, 46);
@@ -365,7 +487,8 @@ main h2{
     outline-offset: -10px;
     margin: 0px;
 }
-article{
+
+article {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -374,25 +497,48 @@ article{
     box-sizing: border-box;
     font-size: 15px;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px 5px  black;
+    box-shadow: 0px 0px 10px 5px black;
     background-color: rgba(0, 0, 0, 0.25);
     overflow: hidden;
     margin-top: 2%;
     margin-bottom: 2%;
 }
-article a{
+
+.delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    height: auto;
+    width: 100%;
+    transform: scaleY(0);
+    transition-duration: 0.2s;
+    transform-origin: 0 0;
+    margin-bottom: 1vh;
+}
+
+article:hover .delete {
+    transform: scaleY(1);
+}
+
+.delete img {
+    height: 5vh;
+}
+
+article a {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-article img{
+
+article img {
     height: 50vh;
     border-radius: 5%/120%;
     padding: 5%;
     background-color: rgba(0, 0, 0, 0.192);
-    box-shadow: 0px 0px 10px 5px  black;
+    box-shadow: 0px 0px 10px 5px black;
 }
-article p{
+
+article p {
     box-sizing: border-box;
     width: 100%;
     border-radius: 30px;
@@ -400,18 +546,22 @@ article p{
     padding: 30px;
     background-color: black;
     color: whitesmoke;
-    box-shadow: 0px 0px 10px 5px  black;
+    box-shadow: 0px 0px 10px 5px black;
     margin-top: 5vh;
 }
+
+
 /*основа*/
 
 
 /*страница с сообщениями*/
-.message{
+
+.message {
     width: 100%;
     user-select: none;
 }
-.message article{
+
+.message article {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -419,22 +569,27 @@ article p{
     justify-content: space-between;
     width: 100%;
 }
-.message a{
+
+.message a {
     width: 30%;
     margin: 1%;
 }
-.message .infa{
+
+.message .infa {
     width: 50%;
 }
-.message img{
+
+.message img {
     width: 100%;
     height: auto;
     margin: 0px;
 }
-.message p{
+
+.message p {
     margin: 1%;
 }
-.status{
+
+.status {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -442,7 +597,8 @@ article p{
     align-content: center;
     width: 15%;
 }
-.status p{
+
+.status p {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -462,9 +618,10 @@ article p{
     font-weight: bold;
     color: whitesmoke;
     margin: 0px;
-    padding: 0px;    
+    padding: 0px;
 }
-.change_status{
+
+.change_status {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -473,22 +630,26 @@ article p{
     border-radius: 0.6vw;
     overflow: hidden;
     transform: scaleY(0);
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
     transform-origin: 0 0;
     background-color: whitesmoke;
     align-items: center;
     border: 1px solid black;
     width: 120%;
 }
-.change_status input{
+
+.change_status input {
     background-color: none;
     width: 100%;
 }
+
+
 /*страница с сообщениями*/
 
 
 /*страница статьи*/
-.page_unit{
+
+.page_unit {
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -504,20 +665,24 @@ article p{
     margin-top: 2%;
     margin-bottom: 2%;
 }
-.page_unit .img{
+
+.page_unit .img {
     width: 40%;
 }
-.img img{
+
+.img img {
     width: 100%;
     border-radius: 10%;
     border: 3px solid black;
 }
-.page_unit .mass{
+
+.page_unit .mass {
     margin-left: 2vw;
     width: 50%;
     flex-grow: 1;
 }
-.page_unit .inf{
+
+.page_unit .inf {
     width: 45%;
     border: 5px inset dimgray;
     background-color: lightgray;
@@ -528,7 +693,8 @@ article p{
     padding: 5px;
     border-radius: 20%;
 }
-.mass .textarea{
+
+.mass .textarea {
     width: 100%;
     height: 40vh;
     resize: none;
@@ -540,7 +706,8 @@ article p{
     margin: 10px 0px 10px;
     box-shadow: 0px 0px 20px 5px black;
 }
-.mass button{
+
+.mass button {
     border: 5px inset dimgray;
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
@@ -548,13 +715,18 @@ article p{
     font-size: 2vw;
     color: whitesmoke;
 }
+
+
 /*страница статьи*/
 
+
 /*страница биографии*/
-.biography{
+
+.biography {
     width: 100%;
 }
-.biography form{
+
+.biography form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -568,23 +740,29 @@ article p{
     border-radius: 10%;
     box-shadow: 0px 0px 20px 5px black;
 }
-.biography .add_img{
+
+.biography .add_img {
     width: 30%;
     margin: 0px;
 }
-.biography img{
+
+.biography img {
     width: 100%;
 }
-.biography .text{
+
+.biography .text {
     width: 60%;
 }
-.biography .description{
+
+.biography .description {
     height: 100%;
 }
-.biography .text textarea{
+
+.biography .text textarea {
     height: 100%;
 }
-.biography .text p{
+
+.biography .text p {
     width: 100%;
     height: auto;
     resize: none;
@@ -596,8 +774,11 @@ article p{
     margin: 10px 0px 10px;
     box-shadow: 0px 0px 20px 5px black;
 }
+
+
 /*страница биографии*/
-footer{
+
+footer {
     width: 100%;
     background-color: rgb(46, 46, 46);
     border-top: 5px solid whitesmoke;

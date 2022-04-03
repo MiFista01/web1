@@ -26,6 +26,7 @@ public class User {
     private String email;
     private String password;
     private int role;
+    private String salt;
 
     public Long getId() {
         return id;
@@ -91,9 +92,19 @@ public class User {
         this.role = role;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", login=" + login + ", name=" + name + ", surname=" + surname + ", phone=" + phone + ", email=" + email + ", password=" + password + ", role=" + role + '}';
+        return "User{" + "id=" + id + ", login=" + login + ", name=" + name + ", surname=" + surname + ", phone=" + phone + ", email=" + email + ", password=" + password + ", role=" + role + ", salt=" + salt + '}';
     }
+
+    
 
 }

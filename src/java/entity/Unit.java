@@ -28,6 +28,7 @@ public class Unit implements Serializable, Comparator<Unit>{
     private String price;
     private String year;
     private String kind;
+    private int status;
     @Column(length = 3000)
     private String description;
     @OneToOne
@@ -106,11 +107,6 @@ public class Unit implements Serializable, Comparator<Unit>{
         this.size = size;
     }
 
-    @Override
-    public String toString() {
-        return "Unit{" + "id=" + id + ", art_name=" + art_name + ", size=" + size + ", price=" + price + ", year=" + year + ", kind=" + kind + ", description=" + description + ", user=" + user + ", picture=" + picture + '}';
-    }
-
 
     public Unit() {
         this.id = id;
@@ -125,6 +121,19 @@ public class Unit implements Serializable, Comparator<Unit>{
     @Override
     public int compare(Unit o1, Unit o2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Unit{" + "id=" + id + ", art_name=" + art_name + ", size=" + size + ", price=" + price + ", year=" + year + ", kind=" + kind + ", status=" + status + ", description=" + description + ", user=" + user + ", picture=" + picture + '}';
     }
     
 }

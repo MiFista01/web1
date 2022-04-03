@@ -20,6 +20,11 @@
     
     <c:forEach items="${items}" var="unit">
         <article>
+            <c:if test="${role eq 2}">
+                <div class="delete">
+                    <a href="size_choise?delete_id=${unit.id}"><img src="img/author/button_delete.png"></a>
+                </div>
+            </c:if>
             <a href="unit?unit_id=${unit.getId()}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
             <p>
                 Название картины - ${unit.getArt_name()}

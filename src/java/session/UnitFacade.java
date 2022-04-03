@@ -39,7 +39,7 @@ public class UnitFacade extends AbstractFacade<Unit> {
     
     public List<String> findSize() {
         try {
-            return (List<String>) em.createQuery("SELECT DISTINCT u.size FROM Unit u").getResultList();
+            return (List<String>) em.createQuery("SELECT DISTINCT u.size FROM Unit u WHERE u.status = 1").getResultList();
         } catch (Exception e) {
             return null;
         }
@@ -47,6 +47,20 @@ public class UnitFacade extends AbstractFacade<Unit> {
     public Unit findid(int id) {
         try {
             return (Unit) em.createQuery("SELECT u FROM Unit u WHERE u.id=:id").setParameter("id", id).getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public List<Unit> findNotDeleted() {
+        try {
+            return (List<Unit>) em.createQuery("SELECT u FROM Unit u WHERE u.status = 1").getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public List<Unit> findDeleted() {
+        try {
+            return (List<Unit>) em.createQuery("SELECT u FROM Unit u WHERE u.status = 0").getResultList();
         } catch (Exception e) {
             return null;
         }

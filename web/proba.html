@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -8,6 +9,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
     <script src='main.js'></script>
 </head>
+
 <body>
     <div class="wrapper">
         <header>
@@ -38,28 +40,20 @@
                     <a href="unit_admin?unit_id=${order.unit.getId()}"><img src="img/post13.jpg" alt="aaa"></a>
                     <p>
                         Название картины - ${order.unit.getArt_name()}
-                        <br>
-                        Размер - ${order.unit.getSize()}
-                        <br>
-                        Цена - ${order.unit.getPrice()}
-                        <br>
-                        Год - ${order.unit.getYear()}
-                        <br>
-                        Жанры: ${order.unit.getKind()}
-                        <br>
-                        Описание: ${unit.getDescription()}
+                        <br> Размер - ${order.unit.getSize()}
+                        <br> Цена - ${order.unit.getPrice()}
+                        <br> Год - ${order.unit.getYear()}
+                        <br> Жанры: ${order.unit.getKind()}
+                        <br> Описание: ${unit.getDescription()}
                     </p>
                     <p>
                         Имя - ${order.user.name}
-                        <br>
-                        Фамилия - ${order.user.surname}
-                        <br>
-                        Телефон - ${order.user.phone}
-                        <br>
-                        Почта - ${order.user.email}
+                        <br> Фамилия - ${order.user.surname}
+                        <br> Телефон - ${order.user.phone}
+                        <br> Почта - ${order.user.email}
                     </p>
                     <div class="status">
-                        <p onclick = "show('change_status')">Заказ</p>
+                        <p onclick="show('change_status')">Заказ</p>
                         <div class="change_status">
                             <form action="change_status" method="POST" enctype="multipart/form-data">
                                 <input type="submit" name="status" value="В процессе">
@@ -72,4 +66,5 @@
             </c:forEach>
         </main>
 </body>
+
 </html>

@@ -9,7 +9,12 @@
     <h2 class="topic">Новинки</h2>
     <c:forEach items="${items}" var="unit">
         <article>
-            <a href="unit?unit_id=${unit.getId()}&user_role=${user.role}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
+            <c:if test="${role eq 2}">
+                <div class="delete">
+                    <a href="index?delete_id=${unit.id}&index"><img src="img/author/button_delete.png"></a>
+                </div>
+            </c:if>
+            <a href="unit?unit_id=${unit.id}&user_role=${user.role}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
             <p>
                 Название картины - ${unit.getArt_name()}
                 <br>

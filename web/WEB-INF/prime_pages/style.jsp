@@ -9,7 +9,7 @@
 <main>
     <h2 class="topic">Выбор картин по стилям</h2>
     <form action="style_choice" class="style_choce">
-        <select required name="kinds" id="kinds" >
+        <select required name="kinds" id="kinds">
             <option disabled selected>выбор жанра</option>
             <option value="портрет">портрет</option>
             <option value="пейзаж">пейзаж</option>
@@ -22,6 +22,11 @@
     
     <c:forEach items="${items}" var="unit">
         <article>
+            <c:if test="${role eq 2}">
+                <div class="delete">
+                    <a href="style_choice?delete_id=${unit.id}"><img src="img/author/button_delete.png"></a>
+                </div>
+            </c:if>
             <a href="unit?unit_id=${unit.getId()}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
             <p>
                 Название картины - ${unit.getArt_name()}

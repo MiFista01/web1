@@ -16,10 +16,9 @@
                 <c:if test="${biography.picture.pathToFile eq NULL}">
                     <img src="img/author/ico_author.png" alt="">
                 </c:if>
-                <c:if test="${!biography.picture.pathToFile eq NULL}">
-
+                <c:if test="${not empty biography.picture.pathToFile}">
+                    <img src="insertFile/${biography.picture.pathToFile}" alt="" id="img">
                 </c:if>
-                <img src="insertFile/${biography.picture.pathToFile}" alt="aaa">
             </div>
             <div class="text">
                 <div class="description">
