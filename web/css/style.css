@@ -87,7 +87,6 @@ header{
     flex-direction: column;
     align-items: center;
     width: 18vw;
-    margin-right: 3%;
 }
 .authorize p{
     font-size: 15px;
@@ -116,8 +115,11 @@ header{
     justify-content: start;
     align-items: center;
     width: 18vw;
-    margin-top: 35vh;
+    margin-top: 32vh;
     user-select: none;
+}
+.head .user{
+    margin-top: 25vh;
 }
 .icon .icons{
     display: flex;
@@ -165,7 +167,7 @@ header{
 
 /*страница добавления статьи*/
 .add{
-    margin-top: -20vh;
+    margin-top: -25vh;
     margin-bottom: 5vh;
 }
 .add form{
@@ -181,6 +183,7 @@ header{
     border: 1px solid black;
     border-radius: 10%;
     box-shadow: 0px 0px 20px 5px black;
+    margin-top: 5vh;
 }
 .add .add_img{
     width: 35%;
@@ -210,6 +213,7 @@ header{
     border: 5px inset dimgray;
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
+    background-color: whitesmoke;
 }
 .date select{
     width: 100%;
@@ -217,6 +221,7 @@ header{
     border: 5px inset dimgray;
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
+    background-color: whitesmoke;
 }
 .description{
     margin-top: 2vh;
@@ -231,7 +236,7 @@ header{
     height: 40vh;
     resize: none;
     border: 5px inset dimgray;
-    background-color: lightgray;
+    background-color: whitesmoke;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10%;
@@ -364,7 +369,7 @@ article{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
+    width: 45%;
     padding: 20px;
     box-sizing: border-box;
     font-size: 15px;
@@ -381,7 +386,7 @@ article a{
     align-items: center;
 }
 article img{
-    height: 40vh;
+    height: 50vh;
     border-radius: 5%/120%;
     padding: 5%;
     background-color: rgba(0, 0, 0, 0.192);
@@ -415,8 +420,11 @@ article p{
     width: 100%;
 }
 .message a{
-    width: 90%;
+    width: 30%;
     margin: 1%;
+}
+.message .infa{
+    width: 50%;
 }
 .message img{
     width: 100%;
@@ -432,6 +440,7 @@ article p{
     justify-content: center;
     align-items: center;
     align-content: center;
+    width: 15%;
 }
 .status p{
     display: flex;
@@ -441,9 +450,9 @@ article p{
     align-content: center;
     box-sizing: content-box;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 1vw;
     width: 100%;
-    border: 5px inset dimgray;
+    border: 0.5vw inset dimgray;
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
     background-color: grey;
@@ -500,7 +509,7 @@ article p{
 }
 .img img{
     width: 100%;
-    border-radius: 20%;
+    border-radius: 10%;
     border: 3px solid black;
 }
 .page_unit .mass{
@@ -531,10 +540,63 @@ article p{
     margin: 10px 0px 10px;
     box-shadow: 0px 0px 20px 5px black;
 }
-
+.mass button{
+    border: 5px inset dimgray;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px black;
+    background-color: grey;
+    font-size: 2vw;
+    color: whitesmoke;
+}
 /*страница статьи*/
 
-
+/*страница биографии*/
+.biography{
+    width: 100%;
+}
+.biography form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2vw;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 10%;
+    box-shadow: 0px 0px 20px 5px black;
+}
+.biography .add_img{
+    width: 30%;
+    margin: 0px;
+}
+.biography img{
+    width: 100%;
+}
+.biography .text{
+    width: 60%;
+}
+.biography .description{
+    height: 100%;
+}
+.biography .text textarea{
+    height: 100%;
+}
+.biography .text p{
+    width: 100%;
+    height: auto;
+    resize: none;
+    border: 5px inset dimgray;
+    background-color: lightgray;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10%;
+    margin: 10px 0px 10px;
+    box-shadow: 0px 0px 20px 5px black;
+}
+/*страница биографии*/
 footer{
     width: 100%;
     background-color: rgb(46, 46, 46);
@@ -543,4 +605,9 @@ footer{
     padding: 30px;
     color: whitesmoke;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-between;
 }

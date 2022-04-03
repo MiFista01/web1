@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <main class="reg">
+    <h2 class="topic">Регистрация</h2>
     <form action="registration" class="registration" method="POST">
         <div>
             <label for="name">Логин</label>

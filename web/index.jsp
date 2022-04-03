@@ -7,17 +7,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <main>
     <h2 class="topic">Новинки</h2>
-    
     <c:forEach items="${items}" var="unit">
-        
         <article>
-            <a href="unitForGuest?unit_id=${unit.getId()}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
+            <a href="unit?unit_id=${unit.getId()}&user_role=${user.role}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>
             <p>
                 Название картины - ${unit.getArt_name()}
                 <br>
                 Размер - ${unit.getSize()}
                 <br>
-                Цена - ${unit.getPrice()}
+                Цена - ${unit.getPrice()}€
                 <br>
                 Год - ${unit.getYear()}
                 <br>

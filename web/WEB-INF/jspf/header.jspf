@@ -13,35 +13,109 @@
 </head>
 <body>
     <div class="wrapper">
-        <header>
-            <div class="head">
-                <a href="index" class="headline">Tmart.ee</a>
-                <nav class="menu">
-                    <ul class="tmenu">
-                        <li onclick = "show('dmenu')"><p>Категории</p> </li>
-                    </ul>
-                    <ul class="dmenu">
-                        <li> <a href="chronology_for_guest">Хронология</a></li>
-                        <li> <a href="style_for_guest">Стиль</a></li>
-                        <li> <a href="size_for_guest">Размер</a></li>
-                        <li> |</li>
-                        <li> <a href="about.html">Биография</a></li>
-                        <li> <a href="reg">Регистрация</a></li>                          
-                    </ul>
-                </nav>
-                <div class="authorize">
-                    <p>Автор: ${name} ${surname}</p>
-                    <form action="authorize" method="POST">
-                        <div class="inp">
-                            <label for="name">Пользователь</label>
-                            <input required type="text" name="user">
+        <c:choose>
+            <c:when test="${role eq 1}">
+                <header>
+                    <div class="head">
+                        <a href="index" class="headline">Tmart.ee</a>
+                        <nav class="menu">
+                            <ul class="tmenu">
+                                <li onclick = "show('dmenu')"><p>Категории</p> </li>
+                            </ul>
+                            <ul class="dmenu">
+                                <li> <a href="chronology">Хронология</a></li>
+                                <li> <a href="style">Стиль</a></li>
+                                <li> <a href="size">Размер</a></li>
+                                <li> |</li>
+                                <li> <a href="biography">Биография</a></li>                      
+                            </ul>
+                        </nav>
+                        <div class="icon user">
+                            <div class="icons">
+                                <img src="img/author/ico_author.png" alt="aaa" onclick="show('functions')">
+                                <p>${user.name} <br> ${user.surname}</p>
+                            </div>
+                            <div class="functions">
+                                <hr>
+                                <a href="page_change_profile">Редактирование профиля</a>
+                                <hr>
+                                <a href="message">Мои заказы</a>
+                                <hr>
+                                <a href="index?out=${0}">Выход</a>
+                                <hr>
+                            </div>
                         </div>
-                        <div class="inp">
-                            <label for="password">Пароль</label>
-                            <input required type="password" name="password">
+                    </div>
+                </header>
+            </c:when>
+            <c:when test="${role eq 2}">
+                <header>
+                    <div class="head">
+                        <a href="index" class="headline">Tmart.ee</a>
+                        <nav class="menu">
+                            <ul class="tmenu">
+                                <li onclick = "show('dmenu')"><p>Категории</p> </li>
+                            </ul>
+                            <ul class="dmenu">
+                                <li> <a href="chronology">Хронология</a></li>
+                                <li> <a href="style">Стиль</a></li>
+                                <li> <a href="size">Размер</a></li>
+                                <li> |</li>
+                                <li> <a href="biography">Биография</a></li>                      
+                            </ul>
+                        </nav>
+                        <div class="icon">
+                            <div class="icons">
+                                <img src="img/author/ico_author.png" alt="aaa" onclick="show('functions')">
+                                <p>${user.name} <br> ${user.surname}</p>
+                            </div>
+                            <div class="functions">
+                                <hr>
+                                <a href="add">Добавление статьи</a>
+                                <hr>
+                                <a href="page_change_profile">Редактирование профиля</a>
+                                <hr>
+                                <a href="message">Заказы</a>
+                                <hr>
+                                <a href="index?out=${0}">Выход</a>
+                                <hr>
+                            </div>
                         </div>
-                        <input type="submit" value="Вход">
-                    </form>
-                </div>
-            </div>
-        </header>
+                    </div>
+                </header>
+            </c:when>
+            <c:when test="${role eq 0}">
+                <header>
+                    <div class="head">
+                        <a href="index" class="headline">Tmart.ee</a>
+                        <nav class="menu">
+                            <ul class="tmenu">
+                                <li onclick = "show('dmenu')"><p>Категории</p> </li>
+                            </ul>
+                            <ul class="dmenu">
+                                <li> <a href="chronology?user=${user}">Хронология</a></li>
+                                <li> <a href="style">Стиль</a></li>
+                                <li> <a href="size">Размер</a></li>
+                                <li> |</li>
+                                <li> <a href="biography">Биография</a></li>
+                                <li> <a href="reg">Регистрация</a></li>                          
+                            </ul>
+                        </nav>
+                        <div class="authorize">
+                            <form action="authorize" method="POST">
+                                <div class="inp">
+                                    <label for="name">Пользователь</label>
+                                    <input required type="text" name="user">
+                                </div>
+                                <div class="inp">
+                                    <label for="password">Пароль</label>
+                                    <input required type="password" name="password">
+                                </div>
+                                <input type="submit" value="Вход">
+                            </form>
+                        </div>
+                    </div>
+                </header>
+            </c:when>
+        </c:choose>
+        

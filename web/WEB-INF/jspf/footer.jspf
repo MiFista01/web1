@@ -2,6 +2,9 @@
 <%@ page pageEncoding="UTF-8" %>
         <footer>
             <p>Все права защищены &copy; 2021</p>
+            <p>Автор: ${admin.name} ${admin.surname}</p>
+            <p>Телефон:${admin.phone}</p>
+            <p>Почта:${admin.email}</p>
         </footer>
     </div>
 </body>

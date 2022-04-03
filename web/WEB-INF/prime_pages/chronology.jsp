@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <main>
+    <h2 class="topic">Хронология написание картин</h2>
     <c:forEach items="${items}" var="unit">
         <article>
             <a href="unit?unit_id=${unit.getId()}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>

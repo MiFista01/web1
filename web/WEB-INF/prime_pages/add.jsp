@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <main class="add">
+    <h2 class="topic">Страница добавления картины</h2>
     <form action="add_img" method="POST" enctype="multipart/form-data">
         <div class="add_img">
             <img src="img/author/img_add.png" alt="" onclick="click_input()" id="img">

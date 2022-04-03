@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <main>
+    <h2 class="topic">Выбор картинк по размерам</h2>
     <form action="size_choise" class="style_choce">
         <select required name="size" id="kinds" >
             <option disabled selected>выбор жанра</option>

@@ -26,6 +26,7 @@ public class Order_user implements Serializable{
     @OneToOne
     private Unit unit;
     private String status;
+    private String date;
 
     public Long getId() {
         return id;
@@ -59,9 +60,18 @@ public class Order_user implements Serializable{
         this.status = status;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
-        return "Order_user{" + "id=" + id + ", user=" + user + ", unit=" + unit + ", status=" + status + '}';
+        return "Order_user{" + "id=" + id + ", user=" + user + ", unit=" + unit + ", status=" + status + ", date=" + date + '}';
     }
+
     
 }
