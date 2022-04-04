@@ -40,6 +40,7 @@ import session.PictureFacade;
 import session.UnitFacade;
 import session.UserFacade;
 import tools.Password_protector;
+import tools.Send_message;
 /**
  *
  * @author aleksei
@@ -310,6 +311,12 @@ public class servlet_prime extends HttpServlet {
                 order.setStatus("Заказ");
                 order.setDate(LocalDate.now().toString());
                 order_userFacade.create(order);
+                Send_message send_message = new Send_message();
+                String text ="Название картины: "+ unit_for_order.getArt_name()+
+                            "  Имя фамилия: "+user_for_order.getName()+" "+user_for_order.getSurname()+
+                            "   Почта: "+user_for_order.getEmail()+
+                            "   Телефон: "+user_for_order.getPhone();
+                send_message.Send(text);
                 request.getRequestDispatcher("/unit").forward(request, response);
                 break;
                 
