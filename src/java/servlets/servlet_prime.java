@@ -299,13 +299,33 @@ public class servlet_prime extends HttpServlet {
                 request.setAttribute("admin", userFacade.findByid(1));
                 request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
                 break;
+            case "/registration":
+                User pers = new User();
+                password_protector = new Password_protector();
+                salt = password_protector.getSalt();
+                pers.setSalt(salt);
+                pers.setLogin(request.getParameter("login"));
+                pers.setName(request.getParameter("name"));
+                pers.setSurname(request.getParameter("surname"));
+                pers.setPhone(request.getParameter("phone"));
+                pers.setEmail(request.getParameter("email"));
+                pers.setPassword(password_protector.getPassword_protector(request.getParameter("password"), salt) );
+                pers.setRole(1);
+                if(userFacade.findByEmail(request.getParameter("email"))!= null || 
+                    userFacade.findByLogin(request.getParameter("login"))!= null){
+                    request.setAttribute("info", "Такой логин или пароль уже есть");
+                }else{
+                    userFacade.create(pers);
+                }
+                request.getRequestDispatcher("/reg").forward(request, response);
+                break;
             case "/order":
                 Unit unit_for_order = unitFacade.findid(Integer.parseInt(request.getParameter("id")));
                 User user_for_order = user;
                 Order_user order = new Order_user();
                 order.setUnit(unit_for_order);
                 order.setUser(user_for_order);
-                order.setStatus("Заказ");
+                order.setStatus("В ожидании");
                 order.setDate(LocalDate.now().toString());
                 order_userFacade.create(order);
                 Send_message send_message = new Send_message();
@@ -333,7 +353,7 @@ public class servlet_prime extends HttpServlet {
                 request.setAttribute("pictures", unitFacade.findNotDeleted());
                 request.setAttribute("lenght", unitFacade.findNotDeleted().size());
                 request.setAttribute("role", role);
-                request.getRequestDispatcher("WEB-INF/prime_pages/add.jsp").forward(request, response);
+                request.getRequestDispatcher("WEB-INF/prime_pages/add.jsp?#btn").forward(request, response);
                 break;
             case "/chronology":
                 request.setAttribute("user", user);
@@ -559,27 +579,7 @@ public class servlet_prime extends HttpServlet {
                 unitFacade.create(unit);
                 request.getRequestDispatcher("/add").forward(request, response);
                 break;
-            case "/registration":
-                User pers = new User();
-                password_protector = new Password_protector();
-                salt = password_protector.getSalt();
-                pers.setSalt(salt);
-                pers.setLogin(request.getParameter("login"));
-                pers.setName(request.getParameter("name"));
-                pers.setSurname(request.getParameter("surname"));
-                pers.setPhone(request.getParameter("phone"));
-                pers.setEmail(request.getParameter("email"));
-                pers.setPassword(password_protector.getPassword_protector(request.getParameter("password"), salt) );
-                pers.setRole(1);
-                if(userFacade.findByEmail(request.getParameter("email"))!= null || 
-                    userFacade.findByLogin(request.getParameter("login"))!= null){
-                    request.setAttribute("info", "Такой логин или пароль уже есть");
-                }else{
-                    userFacade.create(pers);
-                }
-                
-                request.getRequestDispatcher("/reg").forward(request, response);
-                break;
+            
             case "/authorize":
                 String user_aut = request.getParameter("user");
                 String password = request.getParameter("password");

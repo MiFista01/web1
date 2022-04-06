@@ -33,7 +33,8 @@
             <label for="password">Пароль</label>
             <input required type="password" name="password" id="password" value="">
         </div>
-        <input type="submit" value="Регистрация">
+        <input type="submit" value="Регистрация" id="btn">
+        
     </form>
 </main>
 

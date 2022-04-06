@@ -15,13 +15,13 @@
                     <a href="unit?unit_id=${order.unit.getId()}"><img src="insertFile/${order.unit.picture.pathToFile}" alt="aaa"></a>
                     <div class="infa">
                         <p>
-                            Имя - ${order.user.name}
+                            Название картины - ${order.unit.art_name}
                             <br>
-                            Фамилия - ${order.user.surname}
+                            Размер - ${order.unit.size}
                             <br>
-                            Телефон - ${order.user.phone}
+                            Цена - ${order.unit.price}€
                             <br>
-                            Почта - ${order.user.email}
+                            Жанр - ${order.unit.kind}
                         </p>
                     </div>
                     

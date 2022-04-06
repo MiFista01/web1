@@ -11,7 +11,7 @@
     <form action="add_img" method="POST" enctype="multipart/form-data">
         <div class="add_img">
             <img src="img/author/img_add.png" alt="" onclick="click_input()" id="img">
-            <p><input hidden required type="file" name="image" id="input_img" onchange="change()"></p> 
+            <p><input hidden required type="file" name="image" id="input_img" onchange="change()" size="1"></p> 
         </div>
         <div class="text">
             <div class="date">
@@ -37,7 +37,7 @@
                 <label for="description">Описание</label>
                 <textarea required name="description" id="description" cols="30" rows="10"></textarea>
             </div>
-            <button type="submit">Создать</button>
+            <button type="submit" id="btn">Создать</button>
         </div>
     </form>
     <div class="scroll">
