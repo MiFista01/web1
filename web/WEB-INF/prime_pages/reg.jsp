@@ -8,29 +8,30 @@
 <main class="reg">
     <h2 class="topic">Регистрация</h2>
     <form action="registration" class="registration" method="POST">
+        <p>${info}</p>
         <div>
             <label for="name">Логин</label>
-            <input required type="text" name="login" id="name">
+            <input required type="text" name="login" id="name" value="">
         </div>
         <div>
             <label for="name">Имя</label>
-            <input required type="text" name="name" id="name">
+            <input required type="text" name="name" id="name" value="">
         </div>
         <div>
             <label for="surname">Фамилия</label>
-            <input required type="text" name="surname" id="surname">
+            <input required type="text" name="surname" id="surname" value="">
         </div>
         <div>
             <label for="phone">Телефон</label>
-            <input required type="number" name="phone" id="phone">
+            <input required type="number" name="phone" id="phone" value="">
         </div>
         <div>
             <label for="email">Почта</label>
-            <input required type="email" name="email" id="email">
+            <input required type="email" name="email" id="email" value="">
         </div>
         <div>
             <label for="password">Пароль</label>
-            <input required type="password" name="password" id="password">
+            <input required type="password" name="password" id="password" value="">
         </div>
         <input type="submit" value="Регистрация">
     </form>

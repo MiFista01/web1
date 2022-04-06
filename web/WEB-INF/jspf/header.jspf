@@ -105,7 +105,7 @@
                             <form action="authorize" method="POST">
                                 <div class="inp">
                                     <label for="name">Пользователь</label>
-                                    <input required type="text" name="user">
+                                    <input autocomplete="off" required type="text" name="user">
                                 </div>
                                 <div class="inp">
                                     <label for="password">Пароль</label>

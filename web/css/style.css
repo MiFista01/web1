@@ -22,7 +22,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 25vh;
-    background-color: dimgray;
+    background-color: rgba(0, 0, 0, 0.322);
     background-image: url(../img/vremena_goda.png);
     background-size: 45vh;
 }
@@ -157,6 +157,7 @@ header {
 
 .icons img {
     width: 40%;
+    cursor: pointer;
 }
 
 .icons p {
@@ -216,13 +217,13 @@ header {
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    width: 80%;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 2vw;
+    width: 75%;
+    border-radius: 5%/120%;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
-    border: 1px solid black;
-    border-radius: 10%;
-    box-shadow: 0px 0px 20px 5px black;
+    border-radius: 11%;
     margin-top: 5vh;
 }
 
@@ -232,9 +233,11 @@ header {
 
 .add_img img {
     width: 100%;
-    border-radius: 10%;
-    box-shadow: 0px 0px 20px 5px black;
-    border: 2px solid black;
+    border-radius: 5%/120%;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .text {
@@ -247,7 +250,7 @@ header {
 .date {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 35%;
     font-size: 20px;
 }
 
@@ -255,19 +258,21 @@ header {
     height: 3vh;
     width: 90%;
     text-align: center;
-    border: 5px inset dimgray;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px black;
-    background-color: whitesmoke;
+    border-radius: 5%/120%;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .date select {
     width: 100%;
     text-align: center;
-    border: 5px inset dimgray;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px black;
-    background-color: whitesmoke;
+    border-radius: 5%/120%;
+    padding: 5%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .description {
@@ -283,13 +288,11 @@ header {
     width: 100%;
     height: 40vh;
     resize: none;
-    border: 5px inset dimgray;
-    background-color: whitesmoke;
-    padding: 20px;
+    border-radius: 5%/120%;
+    padding: 5%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
-    border-radius: 10%;
-    margin: 10px 0px 10px;
-    box-shadow: 0px 0px 20px 5px black;
 }
 
 .add button {
@@ -314,6 +317,7 @@ header {
     align-items: center;
     width: 20%;
     height: 80vh;
+    overflow: visible;
 }
 
 .scroll img {
@@ -322,13 +326,18 @@ header {
 }
 
 .scroll .imgs_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    border: 1px solid black;
-    box-shadow: 0px 0px 20px 5px black;
-    flex-grow: 1;
+    /* border-radius: 5%/120%;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; */
     overflow: hidden;
+    height: 80%;
 }
 
 .imgs_cont .imgs {
@@ -336,23 +345,21 @@ header {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.192);
-    box-shadow: 0px 0px 10px 5px black;
-    box-sizing: border-box;
-    border: 1px solid black;
-    box-shadow: 0px 0px 20px 5px black;
-    width: 100%;
-    margin-top: 0px;
-    padding: 10%;
     border-radius: 5%/120%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: -10px 0px 10px -10px rgba(0, 0, 0, 0.5), 10px 0px 10px -10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    width: 90%;
+    margin-top: 0.5vh;
     transition-duration: 0.2s;
 }
 
 .imgs_cont .imgs img {
     border-radius: 5%/120%;
-    padding: 2vh;
-    background-color: rgba(0, 0, 0, 0.192);
-    box-shadow: 0px 0px 10px 5px black;
+    padding: 3%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
     height: 20vh;
     width: auto;
     margin: 2vh;
@@ -480,25 +487,26 @@ main {
 main h2 {
     width: 100%;
     text-align: center;
-    background-color: rgb(46, 46, 46);
+    background-color: rgba(46, 46, 46, 0.76);
     padding: 20px 0px;
     color: whitesmoke;
     outline: 10px inset rgb(255, 255, 255);
     outline-offset: -10px;
     margin: 0px;
+    border-radius: 1%;
 }
 
 article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45%;
+    width: 30%;
     padding: 20px;
     box-sizing: border-box;
     font-size: 15px;
-    border-radius: 30px;
-    box-shadow: 0px 0px 10px 5px black;
-    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 1%;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    background-color: rgba(170, 170, 170, 0.281);
     overflow: hidden;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -531,23 +539,38 @@ article a {
 }
 
 article img {
-    height: 50vh;
+    height: 40vh;
     border-radius: 5%/120%;
-    padding: 5%;
-    background-color: rgba(0, 0, 0, 0.192);
-    box-shadow: 0px 0px 10px 5px black;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 article p {
-    box-sizing: border-box;
     width: 100%;
-    border-radius: 30px;
-    border: 4px solid whitesmoke;
-    padding: 30px;
-    background-color: black;
-    color: whitesmoke;
-    box-shadow: 0px 0px 10px 5px black;
-    margin-top: 5vh;
+    border-radius: 1%;
+    border-radius: 5%/120%;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    font-size: 2.5vh;
+}
+
+select {
+    border-radius: 0.6vw;
+    background-color: whitesmoke;
+    align-items: center;
+    border: 0.1vw solid black;
+    width: 20%;
+}
+
+.style_choce button {
+    border-radius: 0.6vw;
+    background-color: whitesmoke;
+    align-items: center;
+    border: 0.1vw solid black;
+    width: 10%;
 }
 
 
@@ -672,8 +695,11 @@ article p {
 
 .img img {
     width: 100%;
-    border-radius: 10%;
-    border: 3px solid black;
+    border-radius: 5%/120%;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .page_unit .mass {
@@ -748,6 +774,11 @@ article p {
 
 .biography img {
     width: 100%;
+    border-radius: 5%/120%;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .biography .text {
@@ -760,19 +791,23 @@ article p {
 
 .biography .text textarea {
     height: 100%;
+    border-radius: 5%/120%;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border: none;
 }
 
 .biography .text p {
     width: 100%;
     height: auto;
     resize: none;
-    border: 5px inset dimgray;
-    background-color: lightgray;
-    padding: 20px;
+    border-radius: 5%/120%;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
-    border-radius: 10%;
-    margin: 10px 0px 10px;
-    box-shadow: 0px 0px 20px 5px black;
 }
 
 

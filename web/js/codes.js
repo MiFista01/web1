@@ -33,21 +33,21 @@ function show_status(id) {
 let numb = 0;
 let step = 0
 
-function scroll_up(name) {
+function scroll_down(name) {
     let lenght = document.getElementById("lenght").value;
     if (step < lenght - 2) {
         step = step + 1;
     }
-    numb = 28.5 * step * (-1);
+    numb = 29 * step * (-1) + 0.5;
     document.getElementById(name).style.margin = String(numb + "vh" + " 0px" + " 0px");
     console.log(document.getElementsByClassName(name)[0].style);
 }
 
-function scroll_down(name) {
+function scroll_up(name) {
     if (step > 0) {
         step = step - 1;
     }
-    numb = 28.5 * step * (-1);
+    numb = 29 * step * (-1) + 0.5;
     document.getElementById(name).style.margin = String(numb + "vh" + " 0px" + " 0px");
     console.log(document.getElementsByClassName(name)[0].style);
 }

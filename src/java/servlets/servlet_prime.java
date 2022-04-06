@@ -158,7 +158,6 @@ public class servlet_prime extends HttpServlet {
                 }
                 units = unitFacade.findNotDeleted();
                 items = new ArrayList();
-                int id = 1;
                 i = 0;
                 while (i<4){
                     try {
@@ -285,8 +284,6 @@ public class servlet_prime extends HttpServlet {
                 request.getRequestDispatcher("/message").forward(request, response);
                 break;
             case "/reg":
-                request.setAttribute("user", user);
-                request.setAttribute("admin", userFacade.findByid(1));
                 try {
                     unit_id = Integer.parseInt(request.getParameter("unit_id"));
                     request.setAttribute("role", request.getParameter("role"));
@@ -574,7 +571,13 @@ public class servlet_prime extends HttpServlet {
                 pers.setEmail(request.getParameter("email"));
                 pers.setPassword(password_protector.getPassword_protector(request.getParameter("password"), salt) );
                 pers.setRole(1);
-                userFacade.create(pers);
+                if(userFacade.findByEmail(request.getParameter("email"))!= null || 
+                    userFacade.findByLogin(request.getParameter("login"))!= null){
+                    request.setAttribute("info", "Такой логин или пароль уже есть");
+                }else{
+                    userFacade.create(pers);
+                }
+                
                 request.getRequestDispatcher("/reg").forward(request, response);
                 break;
             case "/authorize":
