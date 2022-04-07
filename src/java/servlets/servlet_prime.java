@@ -68,7 +68,7 @@ public class servlet_prime extends HttpServlet {
     User user;
     Unit unit;
     Unit state;
-    int role;
+    int role = 0;
     String user_folder;
     String imagesFolder;
     Picture picture;

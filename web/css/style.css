@@ -1,8 +1,12 @@
+html{
+}
 body {
     background-image: url(../img/body_back.png);
     background-attachment: fixed;
 }
-
+#btn{
+    width: 50%;
+}
 .wrapper {
     display: flex;
     flex-direction: column;

@@ -1,3 +1,9 @@
+document.addEventListener("load", function(){
+    window.getElementById("btn").scrollIntoView({
+        block: 'start'
+      })
+})
+
 function click_input() {
     let input = document.getElementById("input_img");
     input.click();
