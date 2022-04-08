@@ -9,7 +9,7 @@
 <main>
     <h2 class="topic">Выбор картин по стилям</h2>
     <form action="style_choice" class="style_choce">
-        <select required name="kinds" id="kinds">
+        <select required name="kind" id="kinds">
             <option disabled selected>выбор жанра</option>
             <option value="портрет">портрет</option>
             <option value="пейзаж">пейзаж</option>
@@ -38,7 +38,6 @@
                 Год - ${unit.getYear()}
                 <br>
                 Жанры: ${unit.getKind()}
-                <br>
                 <br>
                 Описание: ${unit.getDescription()}
             </p>

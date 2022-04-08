@@ -80,12 +80,15 @@ public class servlet_prime extends HttpServlet {
     String salt;
     String name = "btn";
     String bool;
+    String des;
     List<Unit>states;
     List<Unit> items;
     List<Unit> units;
     Comparator<Unit> comparator;
     List<String> sizes;
     List<Part> fileParts;
+    String[] kinds;
+    
     
     
     
@@ -414,9 +417,14 @@ public class servlet_prime extends HttpServlet {
             case "/change_img":
                 Unit unit = unitFacade.find(Long.parseLong(request.getParameter("id")));
                 try {
-                    if(!request.getParameter("kinds").equals("")){
-                    unit.setKind(request.getParameter("kinds"));
-                }
+                    if(!request.getParameterValues("kinds[]").equals("")){
+                    kinds = request.getParameterValues("kinds[]");
+                    des = "";
+                    for (String str:kinds){
+                        des = des+" "+str;
+                    }
+                    unit.setKind(des);
+                    }
                 } catch (Exception e) {
                 }
                 if(!request.getParameter("art_name").equals("")){
@@ -481,9 +489,7 @@ public class servlet_prime extends HttpServlet {
                     role = user.getRole();
                 } catch (Exception e) {
                     role = 0;                
-                }                
-                sizes = unitFacade.findSize();
-                Collections.sort (sizes);
+                }
                 request.setAttribute("role", role);
                 request.setAttribute("sizes", sizes);
                 request.getRequestDispatcher("WEB-INF/prime_pages/style.jsp").forward(request, response);
@@ -499,7 +505,7 @@ public class servlet_prime extends HttpServlet {
                 items = new ArrayList();
                 for (Unit un:units){
                     try {
-                        if (request.getParameter("kinds").equals(un.getKind())){
+                        if (un.getKind().contains(request.getParameter("kind"))){
                             items.add(un);
                         }
                     } catch (Exception e) {
