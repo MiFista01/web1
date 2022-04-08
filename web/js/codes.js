@@ -57,3 +57,19 @@ function scroll_up(name) {
     document.getElementById(name).style.margin = String(numb + "vh" + " 0px" + " 0px");
     console.log(document.getElementsByClassName(name)[0].style);
 }
+function moveto(bool, name) {
+    let page_scroll = JSON.parse(localStorage.getItem("myKey"));
+    console.log(page_scroll)
+    if (bool == 'true' && page_scroll != 0) {
+        window.scroll({
+            top: page_scroll,
+            behavior: 'smooth'
+        });
+    }
+    localStorage.setItem("myKey", JSON.stringify(0));
+}
+
+function coord_scroll() {
+    page_scroll = window.pageYOffset || document.documentElement.scrollTop;
+    localStorage.setItem("myKey", JSON.stringify(page_scroll));
+}

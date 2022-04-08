@@ -34,36 +34,70 @@
                 </div>
             </div>
         </header>
-        <main class="message">
-            <c:forEach items="${items}" var="order">
-                <article>
-                    <a href="unit_admin?unit_id=${order.unit.getId()}"><img src="img/post13.jpg" alt="aaa"></a>
-                    <p>
-                        Название картины - ${order.unit.getArt_name()}
-                        <br> Размер - ${order.unit.getSize()}
-                        <br> Цена - ${order.unit.getPrice()}
-                        <br> Год - ${order.unit.getYear()}
-                        <br> Жанры: ${order.unit.getKind()}
-                        <br> Описание: ${unit.getDescription()}
-                    </p>
-                    <p>
-                        Имя - ${order.user.name}
-                        <br> Фамилия - ${order.user.surname}
-                        <br> Телефон - ${order.user.phone}
-                        <br> Почта - ${order.user.email}
-                    </p>
-                    <div class="status">
-                        <p onclick="show('change_status')">Заказ</p>
-                        <div class="change_status">
-                            <form action="change_status" method="POST" enctype="multipart/form-data">
-                                <input type="submit" name="status" value="В процессе">
-                                <input type="submit" name="status" value="Закончено">
-                                <input type="submit" name="status" value="Отправлено">
-                            </form>
+        <main class="add">
+            <h2 class="topic">Страница добавления картины</h2>
+            <form action="add_img" method="POST" enctype="multipart/form-data">
+                <div class="add_img">
+                    <img src="img/author/img_add.png" alt="" onclick="click_input()" id="img">
+                    <p><input hidden required type="file" name="image" id="input_img" onchange="change()" size="1"></p>
+                </div>
+                <div class="text">
+                    <div class="date">
+                        <label for="art_name">Название картины:</label>
+                        <input required type="text" name="art_name" id="art_name">
+                        <label for="size">Размер картины:</label>
+                        <input required type="text" name="size" id="size">
+                        <label for="price">Цена:</label>
+                        <input required type="number" name="price" id="price">
+                        <label for="year">Год написания</label>
+                        <input required type="date" name="year" id="year">
+                        <label for="kinds">Жанры</label>
+                        <div class="kinds">
+                            <div>
+                                <input id="портрет" type="checkbox" value="портрет" name="kinds">
+                                <label for="портрет">портрет</label>
+                            </div>
+
+                            <div>
+                                <input id="пейзаж" type="checkbox" value="пейзаж" name="kinds">
+                                <label for="пейзаж">пейзаж</label>
+                            </div>
+
+                            <div>
+                                <input id="натюрморт" type="checkbox" value="натюрморт" name="kinds">
+                                <label for="натюрморт">натюрморт</label>
+                            </div>
+
+                            <div>
+                                <input id="бытовой" type="checkbox" value="бытовой" name="kinds">
+                                <label for="бытовой">портрет</label>
+                            </div>
+
+                            <div>
+                                <input id="анималистический" type="checkbox" value="анималистический" name="kinds">
+                                <label for="анималистический">портрет</label>
+                            </div>
                         </div>
                     </div>
-                </article>
-            </c:forEach>
+                    <div class="description">
+                        <label for="description">Описание</label>
+                        <textarea required name="description" id="description" cols="30" rows="10"></textarea>
+                    </div>
+                    <button type="submit" id="btn" onclick="coord_scroll()">Создать</button>
+                </div>
+            </form>
+            <div class="scroll">
+                <img src="img/up.png" onclick="scroll_up('imgs')">
+                <div class="imgs_cont">
+                    <div class="imgs" id="imgs">
+                        <c:forEach items="${pictures}" var="unit">
+                            <img src="insertFile/${unit.picture.pathToFile}">
+                        </c:forEach>
+                    </div>
+                </div>
+                <img src="img/down.png" onclick="scroll_down('imgs')">
+                <input hidden type="text" value="${lenght}" id="lenght">
+            </div>
         </main>
 </body>
 

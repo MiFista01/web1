@@ -11,7 +11,7 @@
         <article>
             <c:if test="${role eq 2}">
                 <div class="delete">
-                    <a href="index?delete_id=${unit.id}&index"><img src="img/author/button_delete.png"></a>
+                    <a href="index?delete_id=${unit.id}"><img src="img/author/button_delete.png"></a>
                 </div>
             </c:if>
             <a href="unit?unit_id=${unit.id}&user_role=${user.role}"><img src="insertFile/${unit.picture.pathToFile}" alt="aaa"></a>

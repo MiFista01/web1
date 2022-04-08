@@ -47,7 +47,7 @@
                         <input hidden="" type="text" name="id" value="${state.id}">
                         
                     </div>
-                    <button type="submit">Изменить</button>
+                    <button type="submit" onclick="coord_scroll()">Изменить</button>
                 </div>
             </form>
         </main>

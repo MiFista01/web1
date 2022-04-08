@@ -1,12 +1,14 @@
-html{
-}
+html {}
+
 body {
     background-image: url(../img/body_back.png);
     background-attachment: fixed;
 }
-#btn{
+
+#btn {
     width: 50%;
 }
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -227,7 +229,6 @@ header {
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
-    border-radius: 1%;
     margin-top: 5vh;
 }
 
@@ -238,10 +239,18 @@ header {
 .add_img img {
     width: 100%;
     border-radius: 5%/120%;
-    padding: 10%;
+    padding: 5%;
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
+}
+
+.admin_form {
+    width: 100%;
+}
+
+.admin_form form {
+    width: 100%;
 }
 
 .text {
@@ -254,19 +263,39 @@ header {
 .date {
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 100%;
     font-size: 20px;
 }
 
 .date input {
     height: 3vh;
-    width: 90%;
+    width: 40%;
     text-align: center;
     border-radius: 5%/120%;
-    padding: 10%;
+    padding: 3%;
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
+}
+
+.kinds {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.kinds div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1%;
+}
+
+.kinds input[type="checkbox"] {
+    width: 2vw;
+    height: 2vw;
 }
 
 .date select {
@@ -335,11 +364,6 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    /* border-radius: 5%/120%;
-    padding: 10%;
-    background-color: rgba(255, 255, 255, 0.315);
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box; */
     overflow: hidden;
     height: 80%;
 }
@@ -545,7 +569,7 @@ article a {
 article img {
     height: 40vh;
     border-radius: 5%/120%;
-    padding: 10%;
+    padding: 5%;
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
 }
@@ -700,11 +724,12 @@ select {
 .img img {
     width: 100%;
     border-radius: 5%/120%;
-    padding: 10%;
+    padding: 5%;
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
 }
+
 .page_unit .mass {
     margin-left: 2vw;
     width: 50%;
@@ -715,12 +740,11 @@ select {
     width: 45%;
     border-radius: 1%;
     border-radius: 5%/120%;
-    padding: 10%;
+    padding: 2%;
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     font-size: 18px;
-    padding: 5px;
     border-radius: 20%;
     font-weight: bold;
 }
@@ -780,7 +804,7 @@ select {
 .biography img {
     width: 100%;
     border-radius: 5%/120%;
-    padding: 10%;
+    padding: 5%;
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
@@ -809,7 +833,7 @@ select {
     height: auto;
     resize: none;
     border-radius: 5%/120%;
-    padding: 10%;
+    padding: 2%;
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;

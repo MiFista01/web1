@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <script src="js/codes.js"></script>
 </head>
-<body>
+<body  onload="moveto('${bool}','${name}')">
     <div class="wrapper">
         <c:choose>
             <c:when test="${role eq 1}">

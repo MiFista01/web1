@@ -15,6 +15,6 @@
         <input type="text" placeholder="Телефон" name="phone" value="${old_phone}">
         <input type="text" placeholder="Почта" name="email" value="${old_email}">
         <input type="text" placeholder="Пароль" name="password" value="${old_password}">
-        <button type="submit">Изменить</button>
+        <button type="submit" onclick="coord_scroll()">Изменить</button>
     </form>
 </main>

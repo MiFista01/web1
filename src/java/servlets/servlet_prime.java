@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -77,6 +78,8 @@ public class servlet_prime extends HttpServlet {
     String choice;
     Password_protector password_protector;
     String salt;
+    String name = "btn";
+    String bool;
     List<Unit>states;
     List<Unit> items;
     List<Unit> units;
@@ -159,7 +162,7 @@ public class servlet_prime extends HttpServlet {
                 units = unitFacade.findNotDeleted();
                 items = new ArrayList();
                 i = 0;
-                while (i<4){
+                while (i<6){
                     try {
                         Unit state = units.get(units.size()-i-1);
                         try {
@@ -195,6 +198,9 @@ public class servlet_prime extends HttpServlet {
                 request.setAttribute("user", user);
                 request.setAttribute("role", role);
                 request.setAttribute("admin", userFacade.findByid(1));
+                request.setAttribute("name", name);
+                request.setAttribute("bool", bool);
+                bool = "";
                 request.getRequestDispatcher("WEB-INF/prime_pages/biography.jsp").forward(request, response);
                 break;
             case "/change_biography":
@@ -238,6 +244,7 @@ public class servlet_prime extends HttpServlet {
                     biography.setBiography(request.getParameter("description"));
                 }
                 biographyFacade.edit(biography);
+                bool = "true";
                 request.getRequestDispatcher("/biography").forward(request, response);
                 break;
             case "/message":
@@ -268,12 +275,10 @@ public class servlet_prime extends HttpServlet {
                 state = unitFacade.findid(unit_id);
                 request.setAttribute("state", state);
                 request.setAttribute("role", role);
+                request.setAttribute("name", name);
+                request.setAttribute("bool", bool);
+                bool = "";
                 request.getRequestDispatcher("WEB-INF/prime_pages/message.jsp").forward(request, response);
-                break;
-            case "/message_user":
-                request.setAttribute("user", user);
-                request.setAttribute("admin", userFacade.findByid(1));
-                request.getRequestDispatcher("WEB-INF/prime_pages/message_user.jsp").forward(request, response);
                 break;
             case "/change_status":
                 String status = request.getParameter("status");
@@ -281,6 +286,7 @@ public class servlet_prime extends HttpServlet {
                 Order_user user_order = order_userFacade.findid(Integer.parseInt(request.getParameter("id")));
                 user_order.setStatus(status);
                 order_userFacade.edit(user_order);
+                bool = "true";
                 request.getRequestDispatcher("/message").forward(request, response);
                 break;
             case "/reg":
@@ -297,6 +303,9 @@ public class servlet_prime extends HttpServlet {
                 request.setAttribute("role", role);
                 request.setAttribute("user", user);
                 request.setAttribute("admin", userFacade.findByid(1));
+                request.setAttribute("name", name);
+                request.setAttribute("bool", bool);
+                bool = "";
                 request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
                 break;
             case "/registration":
@@ -317,6 +326,7 @@ public class servlet_prime extends HttpServlet {
                 }else{
                     userFacade.create(pers);
                 }
+                bool = "true";
                 request.getRequestDispatcher("/reg").forward(request, response);
                 break;
             case "/order":
@@ -353,7 +363,81 @@ public class servlet_prime extends HttpServlet {
                 request.setAttribute("pictures", unitFacade.findNotDeleted());
                 request.setAttribute("lenght", unitFacade.findNotDeleted().size());
                 request.setAttribute("role", role);
+                request.setAttribute("name", name);
+                request.setAttribute("bool", bool);
+                bool = "";
                 request.getRequestDispatcher("WEB-INF/prime_pages/add.jsp?#btn").forward(request, response);
+                break;
+            case "/add_img":
+                unit = new Unit();
+                fileParts = request.getParts().stream().filter( part -> "image".equals(part.getName())).collect(Collectors.toList());
+                user_folder = Long.toString(user.getId()) ;
+                imagesFolder = "C:\\uploadFiles\\"+user_folder;
+                for(Part filePart : fileParts){
+                    String pathToFile = imagesFolder + File.separatorChar
+                                    +getFileName(filePart);
+                    
+                    File tempFile = new File(imagesFolder+File.separatorChar+"tmp"+File.separatorChar+getFileName(filePart));
+                    tempFile.mkdirs();
+                    System.out.println(tempFile.getName());
+                    try(InputStream fileContent = filePart.getInputStream()){
+                       Files.copy(
+                               fileContent,tempFile.toPath(), 
+                               StandardCopyOption.REPLACE_EXISTING
+                       );
+                       writeToFile(resize(tempFile),pathToFile);
+                       tempFile.delete();
+                    }
+                    picture = new Picture();
+                    picture.setPathToFile(pathToFile);
+                    
+                    pictureFacade.create(picture);
+                }    
+                unit.setUser(user);
+                unit.setPicture(picture);
+                unit.setArt_name(request.getParameter("art_name"));
+                unit.setSize(request.getParameter("size"));
+                unit.setPrice(request.getParameter("price"));
+                unit.setYear(request.getParameter("year"));
+                String[] kinds = request.getParameterValues("kinds[]");
+                String des = "";
+                for (String str:kinds){
+                    des = des+" "+str;
+                }
+                unit.setKind(des);
+                unit.setDescription(request.getParameter("description"));
+                unit.setStatus(1);
+                unitFacade.create(unit);
+                bool = "true";
+                request.getRequestDispatcher("/add").forward(request, response);
+                break;
+            case "/change_img":
+                Unit unit = unitFacade.find(Long.parseLong(request.getParameter("id")));
+                try {
+                    if(!request.getParameter("kinds").equals("")){
+                    unit.setKind(request.getParameter("kinds"));
+                }
+                } catch (Exception e) {
+                }
+                if(!request.getParameter("art_name").equals("")){
+                    unit.setArt_name(request.getParameter("art_name"));
+                }
+                if(!request.getParameter("size").equals("")){
+                    unit.setSize(request.getParameter("size"));
+                }
+                if(!request.getParameter("price").equals("")){
+                    unit.setPrice(request.getParameter("price"));
+                }
+                if(!request.getParameter("year").equals("")){
+                    unit.setYear(request.getParameter("year"));
+                }
+                
+                if(!request.getParameter("description").equals("")){
+                    unit.setDescription(request.getParameter("description"));
+                }
+                unitFacade.edit(unit);
+                bool = "true";
+                request.getRequestDispatcher("/unit").forward(request, response);
                 break;
             case "/chronology":
                 request.setAttribute("user", user);
@@ -413,10 +497,10 @@ public class servlet_prime extends HttpServlet {
                 }
                 units = unitFacade.findNotDeleted();
                 items = new ArrayList();
-                for (Unit unit:units){
+                for (Unit un:units){
                     try {
-                        if (request.getParameter("kinds").equals(unit.getKind())){
-                            items.add(unit);
+                        if (request.getParameter("kinds").equals(un.getKind())){
+                            items.add(un);
                         }
                     } catch (Exception e) {
                     }
@@ -457,10 +541,10 @@ public class servlet_prime extends HttpServlet {
                 }
                 units = unitFacade.findNotDeleted();
                 items = new ArrayList();
-                for (Unit unit:units){
+                for (Unit un:units){
                     try {
-                        if (request.getParameter("size").equals(unit.getSize())){
-                        items.add(unit);
+                        if (request.getParameter("size").equals(un.getSize())){
+                        items.add(un);
                     }
                     } catch (Exception e) {
                     }
@@ -472,6 +556,7 @@ public class servlet_prime extends HttpServlet {
             case "/page_change_profile":
                 request.setAttribute("user", user);
                 request.setAttribute("admin", userFacade.findByid(1));
+                
                 try {
                     unit_id = Integer.parseInt(request.getParameter("unit_id"));
                     request.setAttribute("role", request.getParameter("role"));
@@ -488,7 +573,9 @@ public class servlet_prime extends HttpServlet {
                 request.setAttribute("old_surname", user.getSurname());
                 request.setAttribute("old_phone", user.getPhone());
                 request.setAttribute("old_email", user.getEmail());
-                request.setAttribute("old_password", user.getPassword());
+                request.setAttribute("name", name);
+                request.setAttribute("bool", bool);
+                bool = "";
                 request.getRequestDispatcher("WEB-INF/prime_pages/page_change_profile.jsp").forward(request, response);
                 break;
             case "/change_profile":
@@ -510,74 +597,11 @@ public class servlet_prime extends HttpServlet {
                     user.setEmail(request.getParameter("email"));
                 }
                 if(!request.getParameter("password").equals("")){
-                    user.setPassword(request.getParameter("password"));
+                    user.setPassword(password_protector.getPassword_protector(request.getParameter("password"), user.getSalt()));
                 }
                 userFacade.edit(user);
+                bool = "true";
                 request.getRequestDispatcher("/page_change_profile").forward(request, response);
-                break;
-            case "/change_img":
-                Unit unit = unitFacade.find(Long.parseLong(request.getParameter("id")));
-                try {
-                    if(!request.getParameter("kinds").equals("")){
-                    unit.setKind(request.getParameter("kinds"));
-                }
-                } catch (Exception e) {
-                }
-                if(!request.getParameter("art_name").equals("")){
-                    unit.setArt_name(request.getParameter("art_name"));
-                }
-                if(!request.getParameter("size").equals("")){
-                    unit.setSize(request.getParameter("size"));
-                }
-                if(!request.getParameter("price").equals("")){
-                    unit.setPrice(request.getParameter("price"));
-                }
-                if(!request.getParameter("year").equals("")){
-                    unit.setYear(request.getParameter("year"));
-                }
-                
-                if(!request.getParameter("description").equals("")){
-                    unit.setDescription(request.getParameter("description"));
-                }
-                unitFacade.edit(unit);
-                request.getRequestDispatcher("/unit").forward(request, response);
-                break;
-            case "/add_img":
-                unit = new Unit();
-                fileParts = request.getParts().stream().filter( part -> "image".equals(part.getName())).collect(Collectors.toList());
-                user_folder = Long.toString(user.getId()) ;
-                imagesFolder = "C:\\uploadFiles\\"+user_folder;
-                for(Part filePart : fileParts){
-                    String pathToFile = imagesFolder + File.separatorChar
-                                    +getFileName(filePart);
-                    
-                    File tempFile = new File(imagesFolder+File.separatorChar+"tmp"+File.separatorChar+getFileName(filePart));
-                    tempFile.mkdirs();
-                    System.out.println(tempFile.getName());
-                    try(InputStream fileContent = filePart.getInputStream()){
-                       Files.copy(
-                               fileContent,tempFile.toPath(), 
-                               StandardCopyOption.REPLACE_EXISTING
-                       );
-                       writeToFile(resize(tempFile),pathToFile);
-                       tempFile.delete();
-                    }
-                    picture = new Picture();
-                    picture.setPathToFile(pathToFile);
-                    
-                    pictureFacade.create(picture);
-                }    
-                unit.setUser(user);
-                unit.setPicture(picture);
-                unit.setArt_name(request.getParameter("art_name"));
-                unit.setSize(request.getParameter("size"));
-                unit.setPrice(request.getParameter("price"));
-                unit.setYear(request.getParameter("year"));
-                unit.setKind(request.getParameter("kinds"));
-                unit.setDescription(request.getParameter("description"));
-                unit.setStatus(1);
-                unitFacade.create(unit);
-                request.getRequestDispatcher("/add").forward(request, response);
                 break;
             
             case "/authorize":
@@ -619,6 +643,9 @@ public class servlet_prime extends HttpServlet {
                 state = unitFacade.findid(unit_id);
                 request.setAttribute("state", state);
                 request.setAttribute("role", role);
+                request.setAttribute("name", name);
+                request.setAttribute("bool", bool);
+                bool = "";
                 request.getRequestDispatcher("WEB-INF/prime_pages/unit.jsp").forward(request, response);
                 break;
         }
@@ -712,5 +739,9 @@ public class servlet_prime extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private boolean getParameterValues(String kinds) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

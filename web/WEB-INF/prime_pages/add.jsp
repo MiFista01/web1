@@ -11,7 +11,7 @@
     <form action="add_img" method="POST" enctype="multipart/form-data">
         <div class="add_img">
             <img src="img/author/img_add.png" alt="" onclick="click_input()" id="img">
-            <p><input hidden required type="file" name="image" id="input_img" onchange="change()" size="1"></p> 
+            <p><input hidden required type="file" name="image" id="input_img" onchange="change()" size="1"></p>
         </div>
         <div class="text">
             <div class="date">
@@ -24,20 +24,38 @@
                 <label for="year">Год написания</label>
                 <input required type="date" name="year" id="year">
                 <label for="kinds">Жанры</label>
-                <select required name="kinds" id="kinds" >
-                    <option disabled selected>выбор жанра</option>
-                    <option value="портрет">портрет</option>
-                    <option value="пейзаж">пейзаж</option>
-                    <option value="натюрморт">натюрморт</option>
-                    <option value="бытовой">бытовой</option>
-                    <option value="анималистический">анималистический</option>
-                </select>
+                <div class="kinds">
+                    <div>
+                        <input id="портрет" type="checkbox" value="портрет" name="kinds[]">
+                        <label for="портрет">портрет</label>
+                    </div>
+
+                    <div>
+                        <input id="пейзаж" type="checkbox" value="пейзаж" name="kinds[]">
+                        <label for="пейзаж">пейзаж</label>
+                    </div>
+
+                    <div>
+                        <input id="натюрморт" type="checkbox" value="натюрморт" name="kinds[]">
+                        <label for="натюрморт">натюрморт</label>
+                    </div>
+
+                    <div>
+                        <input id="бытовой" type="checkbox" value="бытовой" name="kinds[]">
+                        <label for="бытовой">бытовой</label>
+                    </div>
+
+                    <div>
+                        <input id="анималистический" type="checkbox" value="анималистический" name="kinds[]">
+                        <label for="анималистический">анималистический</label>
+                    </div>
+                </div>
             </div>
             <div class="description">
                 <label for="description">Описание</label>
                 <textarea required name="description" id="description" cols="30" rows="10"></textarea>
             </div>
-            <button type="submit" id="btn">Создать</button>
+            <button type="submit" id="btn" onclick="coord_scroll()">Создать</button>
         </div>
     </form>
     <div class="scroll">

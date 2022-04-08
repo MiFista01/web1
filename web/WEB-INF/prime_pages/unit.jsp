@@ -30,7 +30,7 @@
         </main>
     </c:when>
     <c:when test="${role eq 2}">
-        <main class="add">
+        <main class="add admin_form">
             <h2 class="topic">Страница картины</h2>
             <form action="change_img" method="POST" enctype="multipart/form-data">
                 <div class="add_img">
@@ -61,7 +61,7 @@
                         <textarea name="description" id="description" cols="30" rows="10" >${state.description}</textarea>
                     </div>
                         <input hidden="" type="text" name="id" value="${state.id}">
-                    <button type="submit">Изменить</button>
+                    <button type="submit" onclick="coord_scroll()">Изменить</button>
                 </div>
             </form>
         </main>
