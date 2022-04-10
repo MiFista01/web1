@@ -7,11 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <main class="reg">
     <h2 class="topic">Регистрация</h2>
-    <form action="registration" class="registration" method="POST">
-        <p>${info}</p>
+    <form action="registration" class="registration" method="POST" onsubmit=" return Post()">
         <div>
-            <label for="name">Логин</label>
-            <input required type="text" name="login" id="name" value="">
+            <label for="login">Логин</label>
+            <input required type="text" name="login" id="login" value="">
         </div>
         <div>
             <label for="name">Имя</label>
@@ -31,8 +30,13 @@
         </div>
         <div>
             <label for="password">Пароль</label>
-            <input required type="password" name="password" id="password" value="">
+            <input required type="password" name="password" id="password" value="" oninput="check(this)">
         </div>
+        <div class="check">
+            <p id="count">Количество символов 5-12</p>
+            <p id="case">Иметь символы верхнего регистра</p>
+        </div>
+        <p>${info}</p>
         <input type="submit" value="Регистрация" id="btn" onclick="coord_scroll()">
     </form>
 </main>
