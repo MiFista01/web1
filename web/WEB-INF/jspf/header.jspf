@@ -10,9 +10,11 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <script src="js/codes.js"></script>
+     <script src="js/progress_bar.js"></script>
 </head>
 <body  onload="moveto('${bool}','${name}')">
     <div class="wrapper">
+    <hr class="progress_bar" id="progress_bar">
         <c:choose>
             <c:when test="${role eq 1}">
                 <header>
