@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <script src="js/codes.js"></script>
     <script src="js/progress_bar.js"></script>
-    <script src="js/reg.js"></script>
 </head>
 <body  onload="moveto('${bool}','${name}')">
     <div class="wrapper">

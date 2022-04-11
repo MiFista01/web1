@@ -2,6 +2,8 @@ let numb = 0;
 let step = 0;
 var post = false;
 
+
+/*работа с картинками и инпутом*/
 function click_input() {
     let input = document.getElementById("input_img");
     input.click();
@@ -16,7 +18,10 @@ function change() {
     }
     img.src = localStorage.getItem('my_img');
 }
+/*работа с картинками и инпутом*/
 
+
+/*всплывающие окошки*/
 function show(name) {
     if (document.getElementsByClassName(name)[0].style.transform == "scaleY(1)") {
         document.getElementsByClassName(name)[0].style.transform = "scaleY(0)";
@@ -34,8 +39,10 @@ function show_status(id) {
         unit.style.transform = "scaleY(1)";
     }
 }
+/*всплывающие окошки*/
 
 
+/*скролл картинок*/
 function scroll_down(name) {
     let lenght = document.getElementById("lenght").value;
     if (step < lenght - 2) {
@@ -52,11 +59,14 @@ function scroll_up(name) {
     numb = 29 * step * (-1) + 0.5;
     document.getElementById(name).style.margin = String(numb + "vh" + " 0px" + " 0px");
 }
+/*скролл картинок*/
 
+
+/*перемещение при перезагрузке*/
 function moveto(bool, name) {
     let page_scroll = JSON.parse(localStorage.getItem("myKey"));
     if (bool == 'true' && page_scroll != 0) {
-        window.scrollBy(0,page_scroll);
+        window.scrollBy(0, page_scroll);
     }
     localStorage.setItem("myKey", JSON.stringify(0));
 }
@@ -65,7 +75,11 @@ function coord_scroll() {
     page_scroll = window.pageYOffset || document.documentElement.scrollTop;
     localStorage.setItem("myKey", JSON.stringify(page_scroll));
 }
+/*перемещение при перезагрузке*/
 
+
+
+/*проверка пароля*/
 function check(el) {
     let res = false;
     let pass = el.value;
@@ -82,9 +96,9 @@ function check(el) {
     }
 
     for (i = 0; i < pass.length; i++) {
-        numb = parseInt(pass[i], 10)
+        let check_numb = parseInt(pass[i], 10)
 
-        if (pass[i] === pass[i].toUpperCase() && isNaN(numb)) {
+        if (pass[i] === pass[i].toUpperCase() && isNaN(check_numb)) {
             document.getElementById("case").style.color = "green";
             cases = 1;
             break;
@@ -101,24 +115,45 @@ function check(el) {
     }
     return res;
 }
+/*проверка пароля*/
+
+
 
 function Post() {
-    
-    return post;
+
+    return false;
 }
-function send_reg(){
-    let login = document.getElementById('login').value;
-    let name = document.getElementById('name').value;
-    let surname = document.getElementById('surname').value;
-    let phone = document.getElementById('phone').value;
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-    let unit = {
-        "login":login,
-        "name":name,
-        "surname":surname,
-        "phone":phone,
-        "email":email,
-        "password":password,
+
+async function send_reg() {
+    let infoElement = document.getElementById("info");
+    let login = document.getElementById('login');
+    let name = document.getElementById('name');
+    let surname = document.getElementById('surname');
+    let phone = document.getElementById('phone');
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let user = {
+        "login": login.value,
+        "name": name.value,
+        "surname": surname.value,
+        "phone": phone.value,
+        "email": email.value,
+        "password": password.value,
     }
+    const response = await fetch('registration', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset:utf8'
+        },
+        body: JSON.stringify(user)
+    });
+    then(response => response.json()).then(response => alert(response.info));
+    const result = response.json();
+    infoElement.innerHTML = result.info;
+    document.getElementById('login').value = "";
+    name.value = "";
+    surname.value = "";
+    phone.value = "";
+    email.value = "";
+    password.value = "";
 }

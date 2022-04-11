@@ -16,18 +16,20 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.imageio.ImageIO;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -312,25 +314,36 @@ public class servlet_prime extends HttpServlet {
                 request.getRequestDispatcher("WEB-INF/prime_pages/reg.jsp").forward(request, response);
                 break;
             case "/registration":
+                JsonReader jsonReader = Json.createReader(request.getReader());
+                JsonObject jsonObject = jsonReader.readObject();
+                String reg_login = jsonObject.getString("login");
+                String reg_name = jsonObject.getString("name","");
+                String reg_surname = jsonObject.getString("surname");
+                String reg_phone = jsonObject.getString("phone","");
+                String reg_email = jsonObject.getString("email");
+                String reg_password = jsonObject.getString("password","");
                 User pers = new User();
                 password_protector = new Password_protector();
                 salt = password_protector.getSalt();
                 pers.setSalt(salt);
-                pers.setLogin(request.getParameter("login"));
-                pers.setName(request.getParameter("name"));
-                pers.setSurname(request.getParameter("surname"));
-                pers.setPhone(request.getParameter("phone"));
-                pers.setEmail(request.getParameter("email"));
-                pers.setPassword(password_protector.getPassword_protector(request.getParameter("password"), salt) );
+                pers.setLogin(reg_login);
+                pers.setName(reg_name);
+                pers.setSurname(reg_surname);
+                pers.setPhone(reg_phone);
+                pers.setEmail(reg_email);
+                pers.setPassword(password_protector.getPassword_protector(reg_password, salt) );
                 pers.setRole(1);
-                if(userFacade.findByEmail(request.getParameter("email"))!= null || 
-                    userFacade.findByLogin(request.getParameter("login"))!= null){
-                    request.setAttribute("info", "Такой логин или пароль уже есть");
+                if(userFacade.findByLogin(reg_login)!= null || 
+                        userFacade.findByEmail(reg_email)!= null){
+                    String json = "{\"info\": \"Такой логин или пароль уже есть\"}";
+                    try (PrintWriter out = response.getWriter()) {
+                        out.println(json);
+                    }
                 }else{
                     userFacade.create(pers);
                 }
-                bool = "true";
-                request.getRequestDispatcher("/reg").forward(request, response);
+//                bool = "true";
+//                request.getRequestDispatcher("/reg").forward(request, response);
                 break;
             case "/order":
                 Unit unit_for_order = unitFacade.findid(Integer.parseInt(request.getParameter("id")));

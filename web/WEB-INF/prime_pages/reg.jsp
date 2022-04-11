@@ -36,8 +36,8 @@
             <p id="count">Количество символов 5-12</p>
             <p id="case">Иметь символы верхнего регистра</p>
         </div>
-        <p>${info}</p>
-        <input type="submit" value="Регистрация" id="btn" onclick="coord_scroll()">
+        <p id="info"></p>
+        <input type="submit" value="Регистрация" id="btn" onclick="send_reg()">
     </form>
 </main>
 
