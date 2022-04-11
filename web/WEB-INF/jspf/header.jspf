@@ -10,14 +10,20 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <script src="js/codes.js"></script>
-     <script src="js/progress_bar.js"></script>
+    <script src="js/progress_bar.js"></script>
+    <script src="js/reg.js"></script>
 </head>
 <body  onload="moveto('${bool}','${name}')">
     <div class="wrapper">
     <hr class="progress_bar" id="progress_bar">
+    <div class="up_down">
+        <a href="#up"><img src="img/up.png" alt="aasa"></a>
+        <a href="index"><img src="img/home.png" alt="aasa"></a>
+        <a href="#down"><img src="img/down.png" alt=""></a>
+    </div>
         <c:choose>
             <c:when test="${role eq 1}">
-                <header>
+                <header id="up">
                     <div class="head">
                         <a href="index" class="headline">Tmart.ee</a>
                         <nav class="menu">
@@ -35,15 +41,15 @@
                         <div class="icon user">
                             <div class="icons">
                                 <img src="img/author/ico_author.png" alt="aaa" onclick="show('functions')">
-                                <p>${user.name} <br> ${user.surname}</p>
+                                <p>${user.name} ${user.surname}</p>
                             </div>
                             <div class="functions">
                                 <hr>
-                                <a href="page_change_profile">Редактирование профиля</a>
+                                <p><a href="page_change_profile">Редактирование профиля</a></p>
                                 <hr>
-                                <a href="message">Мои заказы</a>
+                                <p><a href="message">Мои заказы</a></p>
                                 <hr>
-                                <a href="index?out=${0}">Выход</a>
+                                <p><a href="index?out=${0}">Выход</a></p>
                                 <hr>
                             </div>
                         </div>
@@ -51,7 +57,7 @@
                 </header>
             </c:when>
             <c:when test="${role eq 2}">
-                <header>
+                <header id="up">
                     <div class="head">
                         <a href="index" class="headline">Tmart.ee</a>
                         <nav class="menu">
@@ -69,17 +75,17 @@
                         <div class="icon">
                             <div class="icons">
                                 <img src="img/author/ico_author.png" alt="aaa" onclick="show('functions')">
-                                <p>${user.name} <br> ${user.surname}</p>
+                                <p>${user.name} ${user.surname}</p>
                             </div>
                             <div class="functions">
                                 <hr>
-                                <a href="add">Добавление статьи</a>
+                                <p><a href="add">Добавление статьи</a></p>
                                 <hr>
-                                <a href="page_change_profile">Редактирование профиля</a>
+                                <p><a href="page_change_profile">Редактирование профиля</a></p>
                                 <hr>
-                                <a href="message">Заказы</a>
+                                <p><a href="message">Заказы</a></p>
                                 <hr>
-                                <a href="index?out=${0}">Выход</a>
+                                <p><a href="index?out=${0}">Выход</a></p>
                                 <hr>
                             </div>
                         </div>
@@ -87,7 +93,7 @@
                 </header>
             </c:when>
             <c:when test="${role eq 0}">
-                <header>
+                <header id="up">
                     <div class="head">
                         <a href="index" class="headline">Tmart.ee</a>
                         <nav class="menu">

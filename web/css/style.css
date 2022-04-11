@@ -1,5 +1,6 @@
-html {}
-
+html{
+   
+}
 body {
     background-image: url(../img/body_back.png);
     background-attachment: fixed;
@@ -12,24 +13,26 @@ body {
 .wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     width: 90%;
     margin: auto;
+    padding: 0px;
 }
 
 .progress_bar {
     width: 100%;
-    background-color: rgba(46, 46, 46, 0.459);
-    height: 1vh;
+    background-color: rgba(7, 7, 7, 0.7);
+    height: 0.5vh;
     position: fixed;
     top: 0px;
+    left: 0px;
     margin: 0px;
-    border: 2px solid rgba(245, 245, 245, 0.459);
+    border: 2px solid rgba(245, 245, 245, 0.7);
 }
 
 header {
     width: 100%;
-    height: 50vh;
+    height: 43vh;
 }
 
 .head {
@@ -37,7 +40,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 25vh;
+    height: 18vh;
     background-color: rgba(0, 0, 0, 0.322);
     background-image: url(../img/vremena_goda.png);
     background-size: 45vh;
@@ -156,7 +159,7 @@ header {
     justify-content: start;
     align-items: center;
     width: 18vw;
-    margin-top: 32vh;
+    margin-top: 28vh;
     user-select: none;
 }
 
@@ -172,7 +175,7 @@ header {
 }
 
 .icons img {
-    width: 40%;
+    width: 30%;
     cursor: pointer;
 }
 
@@ -195,21 +198,32 @@ header {
     align-items: center;
     border: 0.1vw solid black;
     width: 120%;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
 }
-
+.functions p{
+    width: 100%;
+    transition-duration: 0.5s;
+    margin: 0px;
+    padding: 2vh 0px 2vh;
+    box-sizing: content-box;
+}
 .functions a {
     color: black;
     font-size: 17px;
-    text-align: center;
-    width: 100%;
     margin-left: 2vw;
+}
+.functions p:hover{
+    background-color: rgb(207, 207, 207);
 }
 
 .functions hr {
     color: black;
     height: 1px;
     background-color: black;
-    margin: 1.5vh 1vw 1.5vh;
+    /* margin: 1.5vh 1vw 1.5vh; */
+    padding: 0px;
+    margin: 0px;
 }
 
 
@@ -410,18 +424,24 @@ header {
 /*страница редактирования профиля*/
 
 .change_profile {
-    margin-top: -20vh;
     margin-bottom: 5vh;
-    width: 50%;
+    width: 100%;
 }
-
+.up_down{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
 .change_profile form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    width: 100%;
+    width: 60%;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 2vw;
     box-sizing: border-box;
@@ -469,7 +489,10 @@ header {
 .reg {
     margin-top: -25vh;
     margin-bottom: 5vh;
-    width: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .reg form {
@@ -478,7 +501,7 @@ header {
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    width: 100%;
+    width: 60%;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 2vw;
     box-sizing: border-box;
@@ -535,7 +558,7 @@ main {
 main h2 {
     width: 100%;
     text-align: center;
-    background-color: rgba(46, 46, 46, 0.76);
+    background-color: rgba(46, 46, 46, 0.857);
     padding: 20px 0px;
     color: whitesmoke;
     outline: 10px inset rgb(255, 255, 255);
@@ -577,7 +600,7 @@ article:hover .delete {
 }
 
 .delete img {
-    height: 5vh;
+    height: 2vh;
 }
 
 article a {
@@ -807,7 +830,7 @@ select {
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    width: 100%;
+    width: 60%;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 2vw;
     box-sizing: border-box;
@@ -863,7 +886,7 @@ select {
 /*страница биографии*/
 
 footer {
-    width: 100%;
+    width: 98%;
     background-color: rgb(46, 46, 46);
     border-top: 5px solid whitesmoke;
     border-bottom: 5px solid whitesmoke;

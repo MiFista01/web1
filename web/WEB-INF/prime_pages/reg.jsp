@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <main class="reg">
     <h2 class="topic">Регистрация</h2>
-    <form action="registration" class="registration" method="POST" onsubmit=" return Post()">
+    <form action="registration" class="registration" id="reg" method="POST" onsubmit=" return Post()">
         <div>
             <label for="login">Логин</label>
             <input required type="text" name="login" id="login" value="">

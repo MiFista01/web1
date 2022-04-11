@@ -1,6 +1,6 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-        <footer>
+        <footer id="down">
             <p>Все права защищены &copy; 2021</p>
             <p>Автор: ${admin.name} ${admin.surname}</p>
             <p>Телефон:${admin.phone}</p>

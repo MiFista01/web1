@@ -43,7 +43,6 @@ function scroll_down(name) {
     }
     numb = 29 * step * (-1) + 0.5;
     document.getElementById(name).style.margin = String(numb + "vh" + " 0px" + " 0px");
-    console.log(document.getElementsByClassName(name)[0].style);
 }
 
 function scroll_up(name) {
@@ -52,17 +51,12 @@ function scroll_up(name) {
     }
     numb = 29 * step * (-1) + 0.5;
     document.getElementById(name).style.margin = String(numb + "vh" + " 0px" + " 0px");
-    console.log(document.getElementsByClassName(name)[0].style);
 }
 
 function moveto(bool, name) {
     let page_scroll = JSON.parse(localStorage.getItem("myKey"));
-    console.log(page_scroll)
     if (bool == 'true' && page_scroll != 0) {
-        window.scroll({
-            top: page_scroll,
-            behavior: 'smooth'
-        });
+        window.scrollBy(0,page_scroll);
     }
     localStorage.setItem("myKey", JSON.stringify(0));
 }
@@ -109,5 +103,22 @@ function check(el) {
 }
 
 function Post() {
+    
     return post;
+}
+function send_reg(){
+    let login = document.getElementById('login').value;
+    let name = document.getElementById('name').value;
+    let surname = document.getElementById('surname').value;
+    let phone = document.getElementById('phone').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let unit = {
+        "login":login,
+        "name":name,
+        "surname":surname,
+        "phone":phone,
+        "email":email,
+        "password":password,
+    }
 }
