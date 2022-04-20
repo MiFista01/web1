@@ -342,8 +342,28 @@ public class servlet_prime extends HttpServlet {
                 }else{
                     userFacade.create(pers);
                 }
-//                bool = "true";
-//                request.getRequestDispatcher("/reg").forward(request, response);
+                break;
+            case "/authorize":
+                String user_aut = request.getParameter("user");
+                String password = request.getParameter("password");
+                password_protector = new Password_protector();
+                User aut_user = new User();
+                if(userFacade.findByEmail(user_aut) != null){
+                    aut_user = userFacade.findByEmail(user_aut);
+                }else{
+                    if(userFacade.findByLogin(user_aut) != null){
+                        aut_user = userFacade.findByLogin(user_aut);
+                    }else{
+                        aut_user = null;
+                    }
+                }
+                if(aut_user != null){
+                    if(aut_user.getPassword().equals(password_protector.getPassword_protector(password, aut_user.getSalt()))){
+                        user = aut_user;
+                    }
+                }
+                
+                request.getRequestDispatcher("/index").forward(request, response);
                 break;
             case "/order":
                 Unit unit_for_order = unitFacade.findid(Integer.parseInt(request.getParameter("id")));
@@ -621,29 +641,6 @@ public class servlet_prime extends HttpServlet {
                 userFacade.edit(user);
                 bool = "true";
                 request.getRequestDispatcher("/page_change_profile").forward(request, response);
-                break;
-            
-            case "/authorize":
-                String user_aut = request.getParameter("user");
-                String password = request.getParameter("password");
-                password_protector = new Password_protector();
-                User aut_user = new User();
-                if(userFacade.findByEmail(user_aut) != null){
-                    aut_user = userFacade.findByEmail(user_aut);
-                }else{
-                    if(userFacade.findByLogin(user_aut) != null){
-                        aut_user = userFacade.findByLogin(user_aut);
-                    }else{
-                        aut_user = null;
-                    }
-                }
-                if(aut_user != null){
-                    if(aut_user.getPassword().equals(password_protector.getPassword_protector(password, aut_user.getSalt()))){
-                        user = aut_user;
-                    }
-                }
-                
-                request.getRequestDispatcher("/index").forward(request, response);
                 break;
             case "/unit":
                 request.setAttribute("user", user);

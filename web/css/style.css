@@ -130,6 +130,8 @@ header {
     color: whitesmoke;
     font-weight: bold;
     margin-bottom: 0.5vh;
+    margin: 0px;
+    padding: 0px;
 }
 
 .authorize .inp {
